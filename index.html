@@ -122,50 +122,45 @@
       cursor: pointer;
     }
 
-  .mobile-menu {
-  display: none;
-  flex-direction: column;
-  background: white;
-  position: absolute;
-  top: 70px;
-  width: 100%;
-  left: 0;
-  padding: 20px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  z-index: 99;
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: white;
+      position: absolute;
+      top: 70px;
+      width: 100%;
+      left: 0;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      z-index: 99;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+      text-align: center;
+    }
 
-  /* Animation setup */
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-out;
-  text-align: center;
-}
+    .mobile-menu.show {
+      display: flex;
+      max-height: 500px;
+    }
 
-/* When menu is shown */
-.mobile-menu.show {
-  display: flex;
-  max-height: 500px; /* enough height to reveal all items */
-}
+    .mobile-menu a {
+      padding: 12px 0;
+      color: #0a2540;
+      text-decoration: none;
+      font-size: 16px;
+    }
 
-.mobile-menu a {
-  padding: 12px 0;
-  color: #0a2540;
-  text-decoration: none;
-  font-size: 16px;
-}
-
-/* Style the CTA inside the mobile menu */
-.mobile-menu .cta-button {
-  background-color: #3c8264;
-  color: white;
-  padding: 12px 16px;
-  margin-top: 10px;
-  border-radius: 6px;
-  font-size: 16px;
-  font-weight: 500;
-  display: inline-block;
-}
-
+    .mobile-menu .cta-button {
+      background-color: #3c8264;
+      color: white;
+      padding: 12px 16px;
+      margin-top: 10px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 500;
+      display: inline-block;
+    }
 
     @media (max-width: 768px) {
       .desktop-nav {
@@ -187,52 +182,121 @@
     }
 
     .hero {
+      background-color: #ffffff;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 40px 0;
+    }
+
+    .hero-content {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 60px 60px;
-      background-color: white;
+      max-width: 1200px;
+      margin: auto;
+      flex-wrap: wrap;
       gap: 40px;
     }
 
     .hero-text {
       flex: 1;
       max-width: 600px;
+      animation: fadeInUp 0.8s ease-in-out;
     }
 
     .hero-text h1 {
-      font-size: 42px;
-      font-weight: bold;
-      margin-bottom: 20px;
+      font-size: 48px;
+      font-weight: 700;
       color: #0a2540;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .hero-text h1 span {
+      color: #3c8264;
     }
 
     .hero-text p {
       font-size: 18px;
       color: #444;
-      line-height: 1.6;
       margin-bottom: 30px;
+      line-height: 1.6;
     }
 
-    .hero-img {
+    .hero-image {
       flex: 1;
-      max-width: 200px;
+      max-width: 400px;
+      animation: fadeInRight 0.8s ease-in-out;
     }
 
-    .hero-img img {
+    .hero-image img {
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     }
 
-    .cta a {
-      display: inline-block;
-      background-color: var(--accent);
-      color: white;
-      padding: 14px 24px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 16px;
+    .trust-logos {
+      margin-top: 40px;
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .trust-logos img {
+      height: 40px;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .trust-logos img:hover {
+      opacity: 1;
+    }
+
+    .hero-wave {
+      margin-top: 60px;
+      display: block;
+      width: 100%;
+      height: 80px;
+      transform: translateY(2px);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-text h1 {
+        font-size: 36px;
+      }
+      .hero-image {
+        max-width: 100%;
+      }
+      .trust-logos {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
     }
 
     .mid-banner {
@@ -311,52 +375,24 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero Section - Modern SaaS Style -->
   <section class="hero">
-    <div class="hero-text">
-      <h1>Write your patient’s story — accurately.</h1>
-      <p>Virtual scribing support that makes documentation easier for physicians.</p>
-      <div class="cta">
-        <a href="#contact">Get Started</a>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1><span>Save Time.</span><br> Document Smarter.</h1>
+        <p>Trusted virtual medical scribing for faster, better clinical documentation.</p>
+        <a href="#contact" class="cta-button">Start Your Free Trial</a>
+        <div class="trust-logos">
+          <img src="logo1.png" alt="Partner 1">
+          <img src="logo2.png" alt="Partner 2">
+          <img src="logo3.png" alt="Partner 3">
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="Professional woman.png" alt="Professional Medical Scribe">
       </div>
     </div>
-    <div class="hero-img">
-      <img src="Professional woman.png" alt="Professional Medical Scribe">
-    </div>
+    <svg class="hero-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="#eaf6f3" fill-opacity="1" d="M0,160L1440,320L1440,0L0,0Z"></path>
+    </svg>
   </section>
-
-  <!-- Mid Banner -->
-  <section class="mid-banner">
-    <h2>When you're ready to leave paperwork behind,<br><em>Evergreen</em> is your clean slate.</h2>
-  </section>
-
-  <!-- Services -->
-  <section class="services" id="services">
-    <div class="service">
-      <h3>✔ Reduce burnout</h3>
-      <p>Spend less time charting after hours and more time focused on patient care.</p>
-    </div>
-    <div class="service">
-      <h3>✔ Improve notes</h3>
-      <p>Ensure detailed, consistent documentation that supports better outcomes.</p>
-    </div>
-    <div class="service">
-      <h3>✔ Save time</h3>
-      <p>Streamline visits and speed up your workflow with our scribing support.</p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer id="contact">
-    © 2025 Evergreen Work Solutions — All rights reserved.
-  </footer>
-
-  <!-- Mobile Menu Script -->
-  <script>
-    function toggleMobileMenu() {
-      const menu = document.getElementById("mobileMenu");
-      menu.classList.toggle("show");
-    }
-  </script>
-</body>
-</html>
