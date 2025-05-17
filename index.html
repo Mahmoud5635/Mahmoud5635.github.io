@@ -222,11 +222,18 @@
       line-height: 1.6;
     }
 
-    .hero-image {
-      flex: 1;
-      max-width: 400px;
-      animation: fadeInRight 0.8s ease-in-out;
-    }
+.hero-image {
+  flex: 1;
+  max-width: 280px;
+  animation: fadeInRight 0.8s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .hero-image {
+    display: none;
+  }
+}
+
 
     .hero-image img {
       width: 100%;
