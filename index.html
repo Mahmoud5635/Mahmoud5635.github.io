@@ -115,7 +115,6 @@
       transform: translateY(-1px);
     }
 
-    /* Mobile nav */
     .hamburger {
       display: none;
       font-size: 24px;
@@ -282,23 +281,6 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .hero-content {
-        flex-direction: column;
-        text-align: center;
-      }
-      .hero-text h1 {
-        font-size: 36px;
-      }
-      .hero-image {
-        max-width: 100%;
-      }
-      .trust-logos {
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-    }
-
     .mid-banner {
       background: linear-gradient(to bottom, var(--cloud), var(--light));
       padding: 60px 20px;
@@ -348,25 +330,20 @@
   </style>
 </head>
 <body>
-
   <!-- Header / Navigation -->
   <header>
     <div class="nav-bar">
       <div class="nav-left">Evergreen Work Solutions</div>
-
       <ul class="nav-center desktop-nav">
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-
       <div class="nav-right desktop-nav">
         <a href="#contact" class="cta-button">Schedule a Meeting</a>
       </div>
-
       <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
     </div>
-
     <div class="mobile-menu" id="mobileMenu">
       <a href="#services">Services</a>
       <a href="#about">About</a>
@@ -375,7 +352,7 @@
     </div>
   </header>
 
-  <!-- Hero Section - Modern SaaS Style -->
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
       <div class="hero-text">
@@ -396,3 +373,39 @@
       <path fill="#eaf6f3" fill-opacity="1" d="M0,160L1440,320L1440,0L0,0Z"></path>
     </svg>
   </section>
+
+  <!-- Mid Banner -->
+  <section class="mid-banner">
+    <h2>When you're ready to leave paperwork behind,<br><em>Evergreen</em> is your clean slate.</h2>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="service">
+      <h3>✔ Reduce burnout</h3>
+      <p>Spend less time charting after hours and more time focused on patient care.</p>
+    </div>
+    <div class="service">
+      <h3>✔ Improve notes</h3>
+      <p>Ensure detailed, consistent documentation that supports better outcomes.</p>
+    </div>
+    <div class="service">
+      <h3>✔ Save time</h3>
+      <p>Streamline visits and speed up your workflow with our scribing support.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    © 2025 Evergreen Work Solutions — All rights reserved.
+  </footer>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById("mobileMenu");
+      menu.classList.toggle("show");
+    }
+  </script>
+</body>
+</html>
