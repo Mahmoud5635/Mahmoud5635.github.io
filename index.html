@@ -24,7 +24,7 @@ body {
   line-height: 1.6;
 }
 
-/* Header Container */
+/* Grid Layout */
 header {
   background-color: white;
   padding: 20px 40px;
@@ -42,30 +42,20 @@ header {
   align-items: center;
 }
 
-/* ✅ Add here */
+/* Logo (Left) */
 .nav-left {
-  justify-self: start;
-}
-
-.nav-right {
-  justify-self: end;
-}
-}
-
-/* Logo Left */
-.logo {
   font-size: 18px;
   font-weight: 600;
   color: #0a2540;
-  padding-right: 20px;
+  justify-self: start;
 }
 
-/* Nav Center */
+/* Navigation Links (Center) */
 .nav-center {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 56px; /* Adjust spacing between nav links */
+  gap: 56px;
   margin: 0;
   padding: 0;
 }
@@ -79,7 +69,7 @@ header {
   transition: color 0.3s ease;
 }
 
-/* Underline animation */
+/* Underline effect */
 .nav-center li a::after {
   content: "";
   position: absolute;
@@ -101,7 +91,11 @@ header {
   transform: scaleX(1);
 }
 
-/* CTA Button Right */
+/* CTA Button (Right) */
+.nav-right {
+  justify-self: end;
+}
+
 .cta-button {
   text-decoration: none;
   background-color: #3c8264;
@@ -111,7 +105,6 @@ header {
   font-size: 14px;
   font-weight: 500;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  justify-self: end;
 }
 
 .cta-button:hover {
@@ -276,12 +269,9 @@ header {
 }
 
   </style>
-</head>
-<body>
-
 <header>
   <div class="nav-bar">
-    <div class="nav-left logo">Evergreen Work Solutions</div>
+    <div class="nav-left">Evergreen Work Solutions</div>
 
     <ul class="nav-center">
       <li><a href="#services">Services</a></li>
@@ -294,6 +284,7 @@ header {
     </div>
   </div>
 </header>
+
 
   <section class="hero">
     <div class="hero-text">
