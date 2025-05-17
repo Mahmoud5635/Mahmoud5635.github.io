@@ -5,100 +5,150 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Evergreen Work Solutions</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
+    :root {
+      --dark: #0a2540;
+      --accent: #3c8264;
+      --light: #f8f8f8;
+      --cloud: #eaf6f3;
+    }
+
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      background-color: #f8fafa;
-      color: #0a2540;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
     }
 
     header {
-      background-color: #0a2540;
-      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: white;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin-left: 30px;
+      color: var(--dark);
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 80px 20px;
+      background-color: white;
+      text-align: center;
+    }
+
+    .hero-text {
+      max-width: 500px;
+      margin-right: 40px;
+    }
+
+    .hero-text h1 {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      color: #444;
+    }
+
+    .hero-img img {
+      max-width: 300px;
+      border-radius: 8px;
+    }
+
+    .mid-banner {
+      background-color: var(--cloud);
       padding: 60px 20px;
       text-align: center;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 36px;
+    .mid-banner h2 {
+      font-size: 26px;
+      font-weight: normal;
     }
 
-    header p {
-      font-size: 18px;
-      margin: 10px 0 30px;
-    }
-
-   .cta-buttons {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: nowrap;
-  margin-top: 20px;
-}
-
-.cta-buttons a {
-  text-decoration: none;
-  color: white;
-  background-color: #3399cc;
-  padding: 12px 20px;
-  border-radius: 6px;
-  font-size: 16px;
-  white-space: nowrap;
-}
-
-    }
-
-    .section {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-
-    .section h2 {
-      font-size: 24px;
-      margin-bottom: 20px;
-    }
-
-    .columns {
+    .services {
+      padding: 60px 20px;
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
-      gap: 20px;
+      background-color: white;
     }
 
-    .column {
+    .service {
       flex: 1;
       min-width: 250px;
+      max-width: 300px;
+      padding: 20px;
+      margin: 20px;
+      text-align: center;
     }
 
-    ul {
-      list-style-type: "✔️ ";
-      padding-left: 20px;
+    .service h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-size: 20px;
     }
 
-    blockquote {
-      font-style: italic;
-      color: #333;
-      border-left: 3px solid #3399cc;
-      padding-left: 15px;
-      margin: 20px 0;
+    .service p {
+      color: #555;
+    }
+
+    .cta {
+      margin-top: 30px;
+    }
+
+    .cta a {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      padding: 14px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 16px;
     }
 
     footer {
-      background-color: #0a2540;
-      color: white;
+      background-color: var(--light);
+      color: #777;
       text-align: center;
       padding: 40px 20px;
-      margin-top: 60px;
+      font-size: 14px;
+      border-top: 1px solid #e0e0e0;
     }
 
     @media (max-width: 768px) {
-      .cta-buttons a {
-        display: block;
-        margin: 10px auto;
-        width: fit-content;
+      .hero {
+        flex-direction: column;
+      }
+
+      .hero-text {
+        margin: 0 0 30px 0;
+      }
+
+      nav {
+        display: none; /* You can replace this with a hamburger menu later */
       }
     }
   </style>
@@ -106,75 +156,48 @@
 <body>
 
   <header>
-    <h1>Evergreen Work Solutions</h1>
-    <p>Trusted Virtual Scribing Support for Physicians & Clinics</p>
-    <p><strong>Save Hours. Stay Focused. We Handle the Charts.</strong></p>
-    <div class="cta-buttons">
-      <a href="#contact">Start Your Free Trial</a>
-      <a href="#contact">Schedule a Call</a>
-    </div>
+    <div class="logo">Evergreen Work Solutions</div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <section class="section">
-    <h2>Who We Are</h2>
-    <p>
-      Evergreen Work Solutions helps healthcare providers offload the burden of EHR documentation with trained, accurate, and secure virtual scribes. 
-      We integrate directly into your workflow and help you reclaim your time, reduce burnout, and improve the quality of patient records.
-    </p>
-  </section>
-
-  <section class="section">
-    <h2>Our Services</h2>
-    <div class="columns">
-      <div class="column">
-        <ul>
-          <li>Real-Time & Delayed Virtual Scribing</li>
-          <li>Trained in Epic, Cerner, Athena</li>
-          <li>Custom Templates (SOAP, HPI, ROS)</li>
-        </ul>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Write your patient’s story — accurately.</h1>
+      <p>Virtual scribing support that makes documentation easier for physicians.</p>
+      <div class="cta">
+        <a href="#contact">Get Started</a>
       </div>
-      <div class="column">
-        <ul>
-          <li>QA & Note Review Processes</li>
-          <li>HIPAA-Compliant Workflow</li>
-          <li>Free One-Week Trial</li>
-        </ul>
-      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://via.placeholder.com/300x300.png?text=Professional+Photo" alt="Professional woman">
     </div>
   </section>
 
-  <section class="section">
-    <h2>Why Clinics Trust Evergreen</h2>
-    <ul>
-      <li>Save 10+ Hours a Week on Documentation</li>
-      <li>Fast, Accurate, Secure Charting</li>
-      <li>Month-to-Month Contracts, No Long-Term Ties</li>
-      <li>Flexible Options: Real-Time or Delayed</li>
-      <li>Affordable, Scalable Plans</li>
-    </ul>
+  <section class="mid-banner">
+    <h2>When you're ready to leave paperwork behind,<br><em>Evergreen</em> is your clean slate.</h2>
   </section>
 
-  <section class="section">
-    <h2>What Doctors Are Saying</h2>
-    <blockquote>
-      “I finish work at 5 again. My scribe is invisible and perfect.”<br>— Dr. Omar, Orthopedic Surgeon
-    </blockquote>
-    <blockquote>
-      “Best decision we made. No more weekend charting.”<br>— Dr. Nora, Family Practice
-    </blockquote>
-  </section>
-
-  <section class="section" id="contact">
-    <h2>Ready to Start?</h2>
-    <p>Start with a free, no-obligation trial and see how Evergreen can simplify your day.</p>
-    <div class="cta-buttons">
-      <a href="mailto:contact@evergreenworksolutions.com">Schedule a Free Call</a>
+  <section class="services" id="services">
+    <div class="service">
+      <h3>✔ Reduce burnout</h3>
+      <p>Spend less time charting after hours and more time focused on patient care.</p>
+    </div>
+    <div class="service">
+      <h3>✔ Improve notes</h3>
+      <p>Ensure detailed, consistent documentation that supports better outcomes.</p>
+    </div>
+    <div class="service">
+      <h3>✔ Save time</h3>
+      <p>Streamline visits and speed up your workflow with our scribing support.</p>
     </div>
   </section>
 
-  <footer>
-    © 2025 Evergreen Work Solutions<br />
-    HIPAA Compliant | Privacy Policy | Terms
+  <footer id="contact">
+    © 2025 Evergreen Work Solutions — All rights reserved.
   </footer>
 
 </body>
