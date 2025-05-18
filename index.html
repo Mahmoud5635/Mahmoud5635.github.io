@@ -111,6 +111,28 @@
       .nav-right {
         display: none;
       }
+      /* 1) Make your header/nav-bar 100% opaque white */
+header,
+.nav-bar {
+  background-color: #fff !important;
+  opacity: 1 !important;
+}
+
+/* 2) Ensure the mobile menu is fully white when open */
+.mobile-menu {
+  background-color: #fff !important;
+}
+
+/* Optional: only fade in the transform, not the opacity, so it never goes semi-transparent */
+.mobile-menu {
+  transition: transform 0.3s ease;  /* remove opacity from the transition */
+}
+.mobile-menu.show {
+  transform: translateY(0);
+  opacity: 1;      /* you can even hard-set opacity here if you want no fade at all */
+  pointer-events: auto;
+}
+
       .hamburger {
         display: block;
       }
