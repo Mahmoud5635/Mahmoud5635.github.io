@@ -110,6 +110,17 @@
       .hamburger {
         display: block;
       }
+  /* force the partner logos into one horizontal row */
+  .trust-logos {
+    flex-wrap: nowrap;              /* don’t wrap to next line */
+    justify-content: space-between; /* even spacing */
+    gap: 1rem;                      /* a little gap between them */
+  }
+  .trust-logos img {
+    width: 30%;    /* each logo takes ~30% of the container */
+    height: auto;  /* keep aspect ratio */
+  }
+}
 
       /* Fully opaque, sliding mobile menu */
       .mobile-menu {
