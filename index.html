@@ -47,7 +47,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 20px;
+      padding: 20px;
       flex-wrap: wrap;
     }
 
@@ -145,11 +145,6 @@
       font-size: 16px;
     }
 
-    .mobile-menu a.cta-button {
-      margin-top: 10px;
-      text-align: center;
-    }
-
     .hero {
       padding: 80px 20px;
       max-width: 1100px;
@@ -198,25 +193,6 @@
     .partner-logos img {
       height: 40px;
       opacity: 0.7;
-      transition: opacity 0.3s ease;
-    }
-
-    .partner-logos img:hover {
-      opacity: 1;
-    }
-
-    .hero-img {
-      width: 100%;
-      margin-top: 60px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-    }
-
-    .hero-img img {
-      width: 100%;
-      height: auto;
-      display: block;
     }
 
     .chat-icon {
@@ -242,23 +218,37 @@
       background-color: #2f6e56;
     }
 
+    .about, .testimonials, footer {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .about h2, .testimonials h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .about p, .testimonial {
+      font-size: 17px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .testimonial {
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+    }
+
     @media (max-width: 768px) {
-      .nav-center,
-      .nav-right {
-        display: none;
-      }
-
-      .hamburger {
-        display: block;
-      }
-
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .hero-img {
-        display: block;
-      }
+      .nav-center, .nav-right { display: none; }
+      .hamburger { display: block; }
     }
   </style>
 </head>
@@ -288,28 +278,32 @@
 
   <section class="hero" data-aos="fade-up">
     <h2>#1 Trusted Scribe Partner for Modern Clinics</h2>
-    <h1>
-      Save Time.
-      <span>Document Smarter.</span>
-    </h1>
+    <h1>Save Time. <span>Document Smarter.</span></h1>
     <p>Trusted virtual medical scribing for faster, better clinical documentation.</p>
     <a href="#contact" class="cta-button">Start Your Free Trial</a>
-
     <div class="partner-logos">
-      <img src="novacare-logo.svg" alt="NovaCare Systems" />
-      <img src="clarity-logo.svg" alt="Clarity Health" />
-      <img src="pillar-logo.svg" alt="Pillar Diagnostics" />
-    </div>
-
-    <div class="hero-img" data-aos="fade-up" data-aos-delay="150">
-      <img src="Professional woman.png" alt="Medical Scribing Team" />
+      <img src="logo1.png" alt="NovaCare Systems" />
+      <img src="logo2.png" alt="Clarity Health" />
+      <img src="logo3.png" alt="Pillar Diagnostics" />
     </div>
   </section>
 
-  <!-- Optional Chat Icon -->
-  <div class="chat-icon" title="Chat with us">
-    💬
-  </div>
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>Evergreen Work Solutions is a leading provider of remote medical scribing, helping healthcare professionals reclaim their time, improve documentation accuracy, and enhance the patient experience through expert real-time support.</p>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonial">"Since partnering with Evergreen, our documentation is cleaner, and our burnout rates have dropped. Highly recommend!"</div>
+    <div class="testimonial">"Their team feels like an extension of our practice. Responsive, professional, and incredibly helpful."</div>
+  </section>
+
+  <footer id="contact">
+    © 2025 Evergreen Work Solutions — All rights reserved.
+  </footer>
+
+  <div class="chat-icon" title="Chat with us">💬</div>
 
   <script>
     function toggleMobileMenu() {
