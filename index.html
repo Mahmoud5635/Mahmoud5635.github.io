@@ -33,17 +33,17 @@
       background: var(--light);
       color: var(--dark);
       line-height: 1.6;
+      overflow-x: hidden;           /* 🔒 prevent horizontal scroll */
     }
     a { text-decoration: none; color: inherit; }
     button { font-family: inherit; cursor: pointer; }
 
-    /* NAVBAR (desktop + always solid white) */
+    /* NAVBAR (always solid white) */
     header {
       background: #fff;
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
       position: sticky;
-      top: 0;
-      z-index: 100;
+      top: 0; z-index: 100;
     }
     .nav-bar {
       max-width: 1200px;
@@ -53,10 +53,7 @@
       justify-content: space-between;
       padding: 20px;
     }
-    .nav-left {
-      font-size: 1.125rem;
-      font-weight: 600;
-    }
+    .nav-left { font-size: 1.125rem; font-weight: 600; }
     .nav-center {
       display: flex;
       gap: 2.5rem;
@@ -78,12 +75,9 @@
       transform-origin: left;
       transition: transform 0.3s;
     }
-    .nav-center a:hover {
-      color: var(--accent);
-    }
-    .nav-center a:hover::after {
-      transform: scaleX(1);
-    }
+    .nav-center a:hover { color: var(--accent); }
+    .nav-center a:hover::after { transform: scaleX(1); }
+
     .nav-right .cta-button {
       background: var(--accent);
       color: #fff;
@@ -97,29 +91,17 @@
       transform: translateY(-1px);
     }
 
-    /* Hide hamburger/mobile-menu on desktop */
+    /* Hide hamburger & mobile-menu on desktop */
     .hamburger {
       display: none;
       font-size: 1.5rem;
       cursor: pointer;
     }
     .mobile-menu {
-      /* always present but hidden by transform */
-      display: flex;
-      flex-direction: column;
-      background: #fff;
-      position: absolute;
-      top: 70px;
-      left: 0;
-      width: 100%;
-      padding: 1rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transform: translateY(-110%);
-      transition: transform 0.3s ease-in-out;
-      pointer-events: none;
-      z-index: 90;
+      display: none;
     }
 
+    /* MOBILE LAYOUT */
     @media (max-width: 768px) {
       .nav-center,
       .nav-right {
@@ -127,6 +109,23 @@
       }
       .hamburger {
         display: block;
+      }
+
+      /* Fully opaque, sliding mobile menu */
+      .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transform: translateY(-110%);
+        transition: transform 0.3s ease-in-out;
+        pointer-events: none;
+        z-index: 90;
       }
       .mobile-menu.show {
         transform: translateY(0);
@@ -187,20 +186,21 @@
     .hero .cta-button:hover {
       transform: translateY(-2px);
     }
+
+    /* TRUST LOGOS: wrap on small screens so no overflow */
     .trust-logos {
       display: flex;
+      flex-wrap: wrap;           /* ← allows wrapping */
+      justify-content: center;   /* ← centers wrapped items */
       gap: 2rem;
       margin-top: 2rem;
     }
     .trust-logos img {
       height: 36px;
-      filter: grayscale(100%);
-      transition: filter 0.3s, transform 0.2s;
+      width: auto;               /* maintain aspect ratio */
+      max-width: 100%;           /* never exceed container */
     }
-    .trust-logos img:hover {
-      filter: none;
-      transform: scale(1.05);
-    }
+
     .hero-image-banner {
       max-width: 900px;
       margin: 2rem auto 0;
