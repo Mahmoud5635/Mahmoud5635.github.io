@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <style>
     :root {
@@ -149,6 +150,70 @@
       text-align: center;
     }
 
+    .hero {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      font-size: 18px;
+      color: #888;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .hero h1 span {
+      display: block;
+      color: var(--dark);
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #444;
+    }
+
+    .hero .cta-button {
+      margin-top: 30px;
+      font-size: 16px;
+    }
+
+    .partner-logos {
+      margin-top: 60px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .partner-logos img {
+      height: 40px;
+      opacity: 0.7;
+    }
+
+    .hero-img {
+      width: 100%;
+      margin-top: 60px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+
+    .hero-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     .chat-icon {
       position: fixed;
       bottom: 24px;
@@ -181,6 +246,10 @@
       .hamburger {
         display: block;
       }
+
+      .hero h1 {
+        font-size: 32px;
+      }
     }
   </style>
 </head>
@@ -208,6 +277,26 @@
     </div>
   </header>
 
+  <section class="hero" data-aos="fade-up">
+    <h2>#1 Trusted Scribe Partner for Modern Clinics</h2>
+    <h1>
+      Save Time.
+      <span>Document Smarter.</span>
+    </h1>
+    <p>Trusted virtual medical scribing for faster, better clinical documentation.</p>
+    <a href="#contact" class="cta-button">Start Your Free Trial</a>
+
+    <div class="partner-logos">
+      <img src="novacare-logo.svg" alt="NovaCare Systems" />
+      <img src="clarity-logo.svg" alt="Clarity Health" />
+      <img src="pillar-logo.svg" alt="Pillar Diagnostics" />
+    </div>
+
+    <div class="hero-img">
+      <img src="medical-team.jpg" alt="Medical Scribing Team" />
+    </div>
+  </section>
+
   <!-- Optional Chat Icon -->
   <div class="chat-icon" title="Chat with us">
     💬
@@ -218,6 +307,7 @@
       const menu = document.getElementById("mobileMenu");
       menu.classList.toggle("show");
     }
+    AOS.init();
   </script>
 </body>
 </html>
