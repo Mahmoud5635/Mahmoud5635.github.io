@@ -37,7 +37,7 @@
     a { text-decoration: none; color: inherit; }
     button { font-family: inherit; cursor: pointer; }
 
-    /* Make header/nav always solid white and opaque */
+    /* Ensure header/nav-bar are always solid white */
     header,
     .nav-bar {
       background-color: #fff !important;
@@ -48,7 +48,8 @@
     header {
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
       position: sticky;
-      top: 0; z-index: 100;
+      top: 0;
+      z-index: 100;
     }
     .nav-bar {
       max-width: 1200px;
@@ -76,8 +77,10 @@
     .nav-center a::after {
       content: "";
       position: absolute;
-      bottom: -5px; left: 0;
-      width: 100%; height: 1px;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 1px;
       background: var(--accent);
       transform: scaleX(0);
       transform-origin: left;
@@ -102,7 +105,7 @@
       transform: translateY(-1px);
     }
 
-    /* Hide hamburger & mobile menu on desktop */
+    /* Hide hamburger & mobile-menu on desktop */
     .hamburger {
       display: none;
       font-size: 1.5rem;
@@ -112,7 +115,7 @@
       display: none;
     }
 
-    /* MOBILE STYLES */
+    /* MOBILE LAYOUT */
     @media (max-width: 768px) {
       .nav-center,
       .nav-right {
@@ -122,11 +125,11 @@
         display: block;
       }
 
-      /* ⚡️ SINGLE, OPAQUE MOBILE MENU ⚡️ */
+      /* Only one .mobile-menu definition, fully opaque */
       .mobile-menu {
-        display: none;              /* hidden by default */
+        display: flex;               /* show as flex */
         flex-direction: column;
-        background: #fff;           /* pure white */
+        background: #fff;            /* pure white */
         position: absolute;
         top: 70px;
         left: 0;
@@ -135,10 +138,9 @@
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         transform: translateY(-20px);
         pointer-events: none;
-        transition: transform 0.3s ease;  /* NO opacity transition */
+        transition: transform 0.3s ease;  /* only slide animation */
       }
       .mobile-menu.show {
-        display: flex;              /* now visible */
         transform: translateY(0);    /* slide down */
         pointer-events: auto;
       }
