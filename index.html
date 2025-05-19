@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Evergreen Work Solutions</title>
 
-  <!-- Google Font: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 
   <style>
@@ -36,6 +34,7 @@
     a { text-decoration: none; color: inherit; }
     button { font-family: inherit; cursor: pointer; }
 
+    /* NAVBAR */
     header {
       background: #fff;
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
@@ -53,7 +52,10 @@
       padding: 20px;
     }
 
-    .nav-left { font-size: 1.125rem; font-weight: 600; }
+    .nav-left {
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
 
     .nav-center {
       display: flex;
@@ -106,6 +108,7 @@
     .hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
     .mobile-menu { display: none; }
 
+    /* HERO */
     .hero {
       position: relative;
       background: linear-gradient(to bottom, #fff, #f5fbf9);
@@ -154,15 +157,21 @@
       display: block;
     }
 
+    .typewriter-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
     .typewriter {
       display: inline-block;
       overflow: hidden;
-      vertical-align: bottom;
-      border-right: 2px solid var(--accent);
       white-space: nowrap;
-      animation: typing 2.5s steps(20, end), blink 0.8s step-end infinite;
+      border-right: 2px solid var(--accent);
+      animation: typing 2.5s steps(20, end) 2, blink 0.8s step-end 4;
+      font-weight: 700;
+      font-size: 3rem;
+      color: var(--dark);
       width: 0;
-      max-width: 20ch;
     }
 
     @keyframes typing {
@@ -306,10 +315,12 @@
       <p class="tagline">#1 Trusted Scribe Partner for Modern Clinics</p>
       <h1>
         <span style="color: #3c8264;">Save Time.</span>
-        <span class="typewriter">Document Smarter.</span>
+        <div class="typewriter-wrapper">
+          <span class="typewriter">Document Smarter.</span>
+        </div>
       </h1>
       <p>Trusted virtual medical scribing for faster, better clinical documentation.</p>
-      <a href="#contact" class="cta-button"> Start Your Free Trial</a>
+      <a href="#contact" class="cta-button">✅ Start Your Free Trial</a>
       <div class="trust-logos">
         <img src="logo1.png" alt="NovaCare Systems"/>
         <img src="logo2.png" alt="Clarity Health"/>
