@@ -111,10 +111,13 @@
     .hero .cta-button:hover { transform: translateY(-2px); }
 
     /* Trust logos default: wrap into multiple lines */
-    .trust-logos {
-      display: flex; flex-wrap: wrap;
-      justify-content: center; gap: 2rem;
-      margin-top: 2rem;
+  .trust-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;  /* ← left‐align them */
+  gap: 2rem;
+  margin-top: 2rem;
+}
     }
     .trust-logos img {
       height: 36px; width: auto; max-width: 100%;
