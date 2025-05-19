@@ -38,17 +38,13 @@
     a { text-decoration: none; color: inherit; }
     button { font-family: inherit; cursor: pointer; }
 
-    /* ======= GLASS-MORPHIC HEADER ======= */
+    /* NAVBAR */
     header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
       position: sticky;
       top: 0;
-      width: 100%;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
       z-index: 100;
-      transition: background 0.3s, padding 0.3s;
     }
     .nav-bar {
       max-width: 1200px;
@@ -56,6 +52,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 20px;
     }
     .nav-left { font-size: 1.125rem; font-weight: 600; }
     .nav-center {
@@ -72,19 +69,18 @@
     .nav-center a::after {
       content: "";
       position: absolute;
-      bottom: -5px; left: 0;
-      width: 100%; height: 1px;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 1px;
       background: var(--accent);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.3s;
     }
-    .nav-center a:hover {
-      color: var(--accent);
-    }
-    .nav-center a:hover::after {
-      transform: scaleX(1);
-    }
+    .nav-center a:hover { color: var(--accent); }
+    .nav-center a:hover::after { transform: scaleX(1); }
+
     .nav-right .cta-button {
       background: var(--accent);
       color: #fff;
@@ -97,36 +93,20 @@
       background: #2f6e56;
       transform: translateY(-1px);
     }
+
+    /* Hide on desktop */
     .hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
     .mobile-menu { display: none; }
 
-    /* Wave under the header */
-    .header-wave {
-      position: relative;
-      z-index:  99;
-      width: 100%;
-      overflow: hidden;
-      line-height: 0;
-    }
-    .header-wave svg {
-      display: block;
-      width: 100%;
-      height: 60px;
-    }
-    .header-wave path {
-      fill: var(--light);
-    }
-
-    /* ======= HERO ======= */
+    /* HERO */
     .hero {
-      position: relative;
-      z-index: 1;
       background: linear-gradient(to bottom, #fff, #f5fbf9);
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 2rem;
-      padding: 4rem 1rem 2rem;
+      /* reduced top padding so there's no grey gap under the sticky nav */
+      padding: 2rem 1rem 2rem;
       text-align: left;
     }
     .hero-content {
@@ -164,9 +144,7 @@
       font-weight: 500;
       transition: transform 0.2s;
     }
-    .hero .cta-button:hover {
-      transform: translateY(-2px);
-    }
+    .hero .cta-button:hover { transform: translateY(-2px); }
     .hero-image-banner {
       flex: 0 0 40%;
       max-width: 40%;
@@ -179,7 +157,7 @@
       object-fit: cover;
     }
 
-    /* ======= TRUST LOGOS ======= */
+    /* Trust logos */
     .trust-logos {
       display: flex;
       flex-wrap: wrap;
@@ -193,7 +171,7 @@
       max-width: 100%;
     }
 
-    /* ======= MID-BANNER ======= */
+    /* MID-BANNER */
     .mid-banner {
       background: linear-gradient(to bottom, var(--cloud), var(--light));
       padding: 3rem 1rem;
@@ -201,7 +179,7 @@
     }
     .mid-banner h2 { font-size: 1.625rem; font-weight: 400; }
 
-    /* ======= SERVICES ======= */
+    /* SERVICES */
     .services {
       padding: 3rem 1rem;
       display: flex;
@@ -223,7 +201,7 @@
     }
     .service p { color: #555; }
 
-    /* ======= ABOUT ======= */
+    /* ABOUT */
     .about {
       max-width: 900px;
       margin: 0 auto;
@@ -242,7 +220,7 @@
       line-height: 1.6;
     }
 
-    /* ======= TESTIMONIALS ======= */
+    /* TESTIMONIALS */
     .testimonials {
       background: var(--cloud);
       padding: 3rem 1rem;
@@ -265,7 +243,7 @@
       top: -0.5rem;
     }
 
-    /* ======= FOOTER ======= */
+    /* FOOTER */
     footer {
       background: var(--light);
       color: #777;
@@ -275,11 +253,11 @@
       border-top: 1px solid #e0e0e0;
     }
 
-    /* ======= MOBILE ======= */
+    /* MOBILE STYLES */
     @media (max-width: 768px) {
       .hero {
         flex-direction: column;
-        padding: 2rem 1rem;
+        padding: 2rem 1rem 1rem;
       }
       .hero-image-banner {
         max-width: 100%;
@@ -347,13 +325,6 @@
       <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
     </div>
   </header>
-
-  <!-- SVG WAVE -->
-  <div class="header-wave">
-    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-      <path d="M0,30 C480,90 960,-30 1440,30 L1440,60 L0,60 Z"/>
-    </svg>
-  </div>
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
