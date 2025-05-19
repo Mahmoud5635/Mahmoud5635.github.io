@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +39,7 @@
     a { text-decoration: none; color: inherit; }
     button { font-family: inherit; cursor: pointer; }
 
-    /* ======= GLASS-MORPHIC HEADER ======= */
+    /* ======= NAVBAR (glass-morph) ======= */
     header {
       position: sticky;
       top: 0;
@@ -80,7 +81,6 @@
     }
     .nav-center a:hover { color: var(--accent); }
     .nav-center a:hover::after { transform: scaleX(1); }
-
     .nav-right .cta-button {
       background: var(--accent);
       color: #fff;
@@ -93,35 +93,40 @@
       background: #2f6e56;
       transform: translateY(-1px);
     }
-
     .hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
 
-    /* ======= MOBILE MENU (in-flow) ======= */
+    /* ======= MOBILE MENU (fixed overlay) ======= */
     .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       display: none;
       flex-direction: column;
       background: #fff;
-      width: 100%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      z-index: 90;
+      overflow-y: auto;
+      z-index: 200;
+      padding-top: 80px; /* leave space for header */
     }
     .mobile-menu.show {
       display: flex;
     }
     .mobile-menu a {
-      padding: 0.75rem 1rem;
+      padding: 1rem;
       border-bottom: 1px solid #eee;
+      font-size: 1rem;
+      color: var(--dark);
     }
     .mobile-menu a:last-child {
       border-bottom: none;
     }
-    /* CTA appearance for the last link */
     .mobile-menu .cta-button {
-      display: block;
-      margin: 0.75rem 1rem;
-      text-align: center;
+      /* style schedule link as button */
+      margin: 1rem;
       background: var(--accent);
       color: #fff;
+      text-align: center;
       padding: 0.75rem;
       border-radius: 6px;
       font-weight: 500;
@@ -137,171 +142,124 @@
       padding: 2rem 1rem 2rem; /* flush under nav */
       text-align: left;
     }
-    .hero-content {
-      flex: 1 1 0;
-      max-width: 900px;
-    }
+    .hero-content { flex: 1 1 0; max-width: 900px; }
     .tagline {
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      font-weight: 500;
+      font-size: 0.875rem; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--accent);
+      margin-bottom: 0.5rem; font-weight: 500;
     }
     .hero h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--dark);
+      font-size: 3rem; font-weight: 700;
+      margin-bottom: 1rem; color: var(--dark);
     }
-    .hero h1 span {
-      color: var(--accent);
-      display: block;
-    }
+    .hero h1 span { color: var(--accent); display: block; }
     .hero p {
-      font-size: 1.125rem;
-      color: #444;
+      font-size: 1.125rem; color: #444;
       margin-bottom: 1.5rem;
     }
     .hero .cta-button {
-      background: var(--accent);
-      color: #fff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      font-weight: 500;
-      transition: transform 0.2s;
+      background: var(--accent); color: #fff;
+      padding: 0.75rem 1.5rem; border-radius: 6px;
+      font-weight: 500; transition: transform 0.2s;
     }
     .hero .cta-button:hover { transform: translateY(-2px); }
     .hero-image-banner {
-      flex: 0 0 40%;
-      max-width: 40%;
+      flex: 0 0 40%; max-width: 40%;
     }
     .hero-image-banner img {
-      width: 100%;
-      height: auto;
+      width: 100%; height: auto;
       border-radius: 16px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.1);
       object-fit: cover;
     }
 
-    /* ======= TRUST LOGOS ======= */
+    /* TRUST LOGOS */
     .trust-logos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      gap: 2rem;
+      display: flex; flex-wrap: wrap;
+      justify-content: flex-start; gap: 2rem;
       margin-top: 2rem;
     }
     .trust-logos img {
-      height: 36px;
-      width: auto;
-      max-width: 100%;
+      height: 36px; width: auto; max-width: 100%;
     }
 
-    /* ======= MID-BANNER ======= */
+    /* MID-BANNER */
     .mid-banner {
       background: linear-gradient(to bottom, var(--cloud), var(--light));
-      padding: 3rem 1rem;
-      text-align: center;
+      padding: 3rem 1rem; text-align: center;
     }
     .mid-banner h2 { font-size: 1.625rem; font-weight: 400; }
 
-    /* ======= SERVICES ======= */
+    /* SERVICES */
     .services {
       padding: 3rem 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 2rem;
       background: #fff;
     }
     .service {
-      flex: 1 1 250px;
-      max-width: 300px;
-      padding: 1.5rem;
-      text-align: center;
+      flex: 1 1 250px; max-width: 300px;
+      padding: 1.5rem; text-align: center;
     }
     .service h3 {
-      font-size: 1.25rem;
-      color: var(--accent);
+      font-size: 1.25rem; color: var(--accent);
       margin-bottom: 0.75rem;
     }
     .service p { color: #555; }
 
-    /* ======= ABOUT ======= */
+    /* ABOUT */
     .about {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 3rem 1rem;
-      text-align: center;
+      max-width: 900px; margin: 0 auto;
+      padding: 3rem 1rem; text-align: center;
       background: #fff;
     }
     .about h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 2rem; margin-bottom: 1rem;
       color: var(--dark);
     }
     .about p {
-      font-size: 1rem;
-      color: #444;
+      font-size: 1rem; color: #444;
       line-height: 1.6;
     }
 
-    /* ======= TESTIMONIALS ======= */
+    /* TESTIMONIALS */
     .testimonials {
       background: var(--cloud);
-      padding: 3rem 1rem;
-      text-align: center;
+      padding: 3rem 1rem; text-align: center;
     }
     .testimonial {
-      max-width: 600px;
-      margin: 0 auto 2rem;
-      font-style: italic;
-      color: #333;
-      position: relative;
-      padding-left: 1.5rem;
+      max-width: 600px; margin: 0 auto 2rem;
+      font-style: italic; color: #333;
+      position: relative; padding-left: 1.5rem;
     }
     .testimonial::before {
-      content: "“";
-      font-size: 3rem;
+      content: "“"; font-size: 3rem;
       color: var(--accent);
-      position: absolute;
-      left: 0;
-      top: -0.5rem;
+      position: absolute; left: 0; top: -0.5rem;
     }
 
-    /* ======= FOOTER ======= */
+    /* FOOTER */
     footer {
-      background: var(--light);
-      color: #777;
-      text-align: center;
-      padding: 2rem 1rem;
+      background: var(--light); color: #777;
+      text-align: center; padding: 2rem 1rem;
       font-size: 0.875rem;
       border-top: 1px solid #e0e0e0;
     }
 
-    /* ======= MOBILE ======= */
+    /* MOBILE LAYOUT */
     @media (max-width: 768px) {
-      .hamburger {
-        display: block;
-      }
+      /* show hamburger, hide desktop nav */
+      .hamburger { display: block; }
       .nav-center,
-      .nav-right {
-        display: none;
-      }
+      .nav-right { display: none; }
 
       .hero {
         flex-direction: column;
         padding: 2rem 1rem 1rem;
       }
       .hero-image-banner {
-        max-width: 100%;
-        margin-top: 1.5rem;
+        max-width: 100%; margin-top: 1.5rem;
       }
-
-      /* show/hide by toggling `.show` */
-      /* no absolute/transform */
     }
   </style>
 </head>
@@ -403,3 +361,4 @@
   </script>
 </body>
 </html>
+```
