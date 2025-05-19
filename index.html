@@ -38,13 +38,13 @@
     a { text-decoration: none; color: inherit; }
     button { font-family: inherit; cursor: pointer; }
 
-    /* NAVBAR with glass-morph */
+    /* ======= GLASS-MORPHIC HEADER ======= */
     header {
       position: sticky;
       top: 0;
       width: 100%;
       padding: 20px;
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255,255,255,0.6);
       backdrop-filter: blur(12px);
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
       z-index: 100;
@@ -71,10 +71,8 @@
     .nav-center a::after {
       content: "";
       position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 100%;
-      height: 1px;
+      bottom: -5px; left: 0;
+      width: 100%; height: 1px;
       background: var(--accent);
       transform: scaleX(0);
       transform-origin: left;
@@ -97,9 +95,39 @@
     }
 
     .hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
-    .mobile-menu { display: none; }
 
-    /* HERO */
+    /* ======= MOBILE MENU (in-flow) ======= */
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: #fff;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      z-index: 90;
+    }
+    .mobile-menu.show {
+      display: flex;
+    }
+    .mobile-menu a {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #eee;
+    }
+    .mobile-menu a:last-child {
+      border-bottom: none;
+    }
+    /* CTA appearance for the last link */
+    .mobile-menu .cta-button {
+      display: block;
+      margin: 0.75rem 1rem;
+      text-align: center;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    /* ======= HERO ======= */
     .hero {
       background: linear-gradient(to bottom, #fff, #f5fbf9);
       display: flex;
@@ -157,7 +185,7 @@
       object-fit: cover;
     }
 
-    /* Trust logos */
+    /* ======= TRUST LOGOS ======= */
     .trust-logos {
       display: flex;
       flex-wrap: wrap;
@@ -171,7 +199,7 @@
       max-width: 100%;
     }
 
-    /* MID-BANNER */
+    /* ======= MID-BANNER ======= */
     .mid-banner {
       background: linear-gradient(to bottom, var(--cloud), var(--light));
       padding: 3rem 1rem;
@@ -179,7 +207,7 @@
     }
     .mid-banner h2 { font-size: 1.625rem; font-weight: 400; }
 
-    /* SERVICES */
+    /* ======= SERVICES ======= */
     .services {
       padding: 3rem 1rem;
       display: flex;
@@ -201,7 +229,7 @@
     }
     .service p { color: #555; }
 
-    /* ABOUT */
+    /* ======= ABOUT ======= */
     .about {
       max-width: 900px;
       margin: 0 auto;
@@ -220,7 +248,7 @@
       line-height: 1.6;
     }
 
-    /* TESTIMONIALS */
+    /* ======= TESTIMONIALS ======= */
     .testimonials {
       background: var(--cloud);
       padding: 3rem 1rem;
@@ -243,7 +271,7 @@
       top: -0.5rem;
     }
 
-    /* FOOTER */
+    /* ======= FOOTER ======= */
     footer {
       background: var(--light);
       color: #777;
@@ -253,8 +281,16 @@
       border-top: 1px solid #e0e0e0;
     }
 
-    /* MOBILE */
+    /* ======= MOBILE ======= */
     @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      .nav-center,
+      .nav-right {
+        display: none;
+      }
+
       .hero {
         flex-direction: column;
         padding: 2rem 1rem 1rem;
@@ -263,47 +299,9 @@
         max-width: 100%;
         margin-top: 1.5rem;
       }
-      .nav-center,
-      .nav-right {
-        display: none;
-      }
-      .hamburger {
-        display: block;
-      }
-      .mobile-menu {
-        display: flex;
-        flex-direction: column;
-        background: #fff;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        padding: 1rem;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        transform: translateY(-110%);
-        transition: transform 0.3s ease-in-out;
-        pointer-events: none;
-        z-index: 90;
-      }
-      .mobile-menu.show {
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-      .mobile-menu a {
-        margin-bottom: 1rem;
-        font-size: 1rem;
-      }
-      .mobile-menu .cta-button {
-        margin-top: 0.5rem;
-        text-align: center;  
-      }
-      .trust-logos {
-        flex-wrap: nowrap;
-        gap: 0.5rem;
-      }
-      .trust-logos img {
-        width: 30%;
-      }
+
+      /* show/hide by toggling `.show` */
+      /* no absolute/transform */
     }
   </style>
 </head>
