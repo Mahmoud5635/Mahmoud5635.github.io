@@ -45,8 +45,6 @@
       width: auto;
       max-width: 100px;
     }
-
-    /* force all 3 logos in one row on mobile */
     @media (max-width: 768px) {
       .trust-logos {
         flex-wrap: nowrap;
@@ -83,7 +81,10 @@
       justify-content: space-between;
       padding: 20px 40px;
     }
-    .nav-left { font-size: 1.125rem; font-weight: 600; }
+    .nav-left {
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
     .nav-center {
       display: flex;
       gap: 2rem;
@@ -105,12 +106,9 @@
       transform-origin: left;
       transition: transform 0.3s;
     }
-    .nav-center a:hover {
-      color: var(--accent);
-    }
-    .nav-center a:hover::after {
-      transform: scaleX(1);
-    }
+    .nav-center a:hover { color: var(--accent); }
+    .nav-center a:hover::after { transform: scaleX(1); }
+
     .nav-right .cta-button {
       background: var(--accent);
       color: #fff;
@@ -123,6 +121,7 @@
       background: #2f6e56;
       transform: translateY(-1px);
     }
+
     .hamburger {
       display: none;
       font-size: 1.5rem;
@@ -168,14 +167,16 @@
     }
 
     @media (max-width: 768px) {
-      .nav-center, .nav-right {
+      /* tighten header padding & center items */
+      .nav-bar {
+        padding: 10px 20px;
+      }
+      .nav-center,
+      .nav-right {
         display: none;
       }
       .hamburger {
         display: block;
-      }
-      .nav-bar {
-        padding: 20px;
       }
     }
 
@@ -205,9 +206,7 @@
       margin-bottom: 20px;
       color: var(--dark);
     }
-    .hero-text h1 span {
-      color: var(--accent);
-    }
+    .hero-text h1 span { color: var(--accent); }
     .hero-text p {
       font-size: 18px;
       color: #444;
@@ -225,6 +224,11 @@
     }
     .hero-text .cta-button:hover {
       transform: translateY(-2px);
+    }
+    .hero-image {
+      flex: 0 0 40%;
+      max-width: 40%;
+      animation: fadeInRight 0.8s ease-in-out;
     }
     .hero-image img {
       width: 100%;
@@ -418,12 +422,8 @@
 
   <!-- TESTIMONIALS -->
   <section class="testimonials" id="testimonials">
-    <div class="testimonial">
-      Since partnering with Evergreen, our documentation is cleaner, and our burnout rates have dropped. Highly recommend!
-    </div>
-    <div class="testimonial">
-      Their team feels like an extension of our practice. Responsive, professional, and incredibly helpful.
-    </div>
+    <div class="testimonial">Since partnering with Evergreen, our documentation is cleaner, and our burnout rates have dropped. Highly recommend!</div>
+    <div class="testimonial">Their team feels like an extension of our practice. Responsive, professional, and incredibly helpful.</div>
   </section>
 
   <!-- FOOTER -->
