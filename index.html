@@ -14,13 +14,26 @@
       --light: #f8f8f8;
       --cloud: #eaf6f3;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--light); color: var(--dark); line-height: 1.6; overflow-x: hidden; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
     a { text-decoration: none; color: inherit; }
     button { font-family: inherit; cursor: pointer; }
 
-    /* GLASS-MORPHIC HEADER */
+    /* ========== HEADER (glass-morphic) ========== */
     header {
       position: sticky;
       top: 0;
@@ -43,11 +56,7 @@
       justify-content: space-between;
       padding: 0 20px;
     }
-
-    .nav-left {
-      font-size: 1.125rem;
-      font-weight: 600;
-    }
+    .nav-left { font-size: 1.125rem; font-weight: 600; }
     .nav-center {
       display: flex;
       gap: 2rem;
@@ -77,7 +86,6 @@
     .nav-center a:hover::after {
       transform: scaleX(1);
     }
-
     .nav-right .cta-button {
       background: var(--accent);
       color: #fff;
@@ -90,15 +98,12 @@
       background: #2f6e56;
       transform: translateY(-1px);
     }
-
     .hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
-    .mobile-menu { display: none; }
 
-    /* SVG WAVE UNDER HEADER */
+    /* wave sits *below* the header but *above* the hero background */
     .header-wave {
-      position: absolute;
-      bottom: -1px;
-      left: 0;
+      position: relative;
+      z-index: 99;
       width: 100%;
       overflow: hidden;
       line-height: 0;
@@ -109,11 +114,12 @@
       height: 60px;
     }
 
-    /* HERO SECTION */
+    /* ========== HERO ========== */
     .hero {
       position: relative;
+      z-index: 1;
       background: linear-gradient(to bottom, #fff, #f5fbf9);
-      padding: 6rem 1rem 2rem; /* extra top padding for overlay */
+      padding: 6rem 1rem 2rem; /* extra top padding under the floating header */
       text-align: center;
       overflow: hidden;
     }
@@ -140,9 +146,24 @@
       border-radius: 50%;
       z-index: 0;
     }
-    .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
-    .tagline { font-size: 0.75rem; letter-spacing: 2px; color: var(--dark); opacity: 0.6; margin-bottom: 0.75rem; }
-    .headline-accent { font-size: 3.5rem; color: var(--accent); text-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .tagline {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: var(--dark);
+      opacity: 0.6;
+      margin-bottom: 0.75rem;
+    }
+    .headline-accent {
+      font-size: 3.5rem;
+      color: var(--accent);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
     .headline-main {
       font-size: 3.2rem;
       font-weight: 700;
@@ -152,7 +173,11 @@
       padding-bottom: 0.2rem;
       margin-top: 0.5rem;
     }
-    .hero p { font-size: 1.125rem; color: #444; margin-bottom: 1.5rem; }
+    .hero p {
+      font-size: 1.125rem;
+      color: #444;
+      margin-bottom: 1.5rem;
+    }
     .cta-button {
       background: var(--accent);
       color: #fff;
@@ -162,14 +187,22 @@
       transition: transform 0.2s;
       animation: pulse 4s infinite;
     }
-    .cta-button:hover { transform: scale(1.04); }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(60,130,100, 0.4); }
-      70% { box-shadow: 0 0 0 12px rgba(60,130,100, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(60,130,100, 0); }
+    .cta-button:hover {
+      transform: scale(1.04);
     }
-    .mini-slogan { margin-top: 1rem; font-style: italic; color: #666; }
-    .hero-image-banner { margin-top: 2rem; }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(60,130,100,0.4); }
+      70% { box-shadow: 0 0 0 12px rgba(60,130,100,0); }
+      100% { box-shadow: 0 0 0 0 rgba(60,130,100,0); }
+    }
+    .mini-slogan {
+      margin-top: 1rem;
+      font-style: italic;
+      color: #666;
+    }
+    .hero-image-banner {
+      margin-top: 2rem;
+    }
     .label {
       font-size: 0.75rem;
       background: var(--accent);
@@ -188,7 +221,84 @@
       object-fit: cover;
     }
 
-    /* (keep the rest of your sections’ CSS unchanged) */
+    /* ========== REST OF THE SECTIONS (unchanged) ========== */
+    .mid-banner {
+      background: linear-gradient(to bottom, var(--cloud), var(--light));
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    .mid-banner h2 {
+      font-size: 1.625rem;
+      font-weight: 400;
+    }
+    .services {
+      padding: 3rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      background: #fff;
+    }
+    .service {
+      flex: 1 1 250px;
+      max-width: 300px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .service h3 {
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .service p {
+      color: #555;
+    }
+    .about {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1rem;
+      text-align: center;
+      background: #fff;
+    }
+    .about h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    .about p {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.6;
+    }
+    .testimonials {
+      background: var(--cloud);
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    .testimonial {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-style: italic;
+      color: #333;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    .testimonial::before {
+      content: "“";
+      font-size: 3rem;
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      top: -0.5rem;
+    }
+    footer {
+      background: var(--light);
+      color: #777;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.875rem;
+      border-top: 1px solid #e0e0e0;
+    }
 
     @media (max-width: 768px) {
       .hero { padding-top: 8rem; }
@@ -221,7 +331,7 @@
 </head>
 <body>
 
-  <!-- NAV & WAVE -->
+  <!-- NAVBAR -->
   <header>
     <div class="nav-bar">
       <div class="nav-left">Evergreen Work Solutions</div>
@@ -236,12 +346,14 @@
       </div>
       <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
     </div>
-    <div class="header-wave">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-        <path d="M0,30 C360,90 1080,-30 1440,30 L1440,60 L0,60 Z" fill="var(--light)"/>
-      </svg>
-    </div>
   </header>
+
+  <!-- WAVE TRANSITION -->
+  <div class="header-wave">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path d="M0,30 C360,90 1080,-30 1440,30 L1440,60 L0,60 Z" fill="var(--light)"/>
+    </svg>
+  </div>
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
@@ -275,17 +387,55 @@
     </div>
   </section>
 
-  <!-- …rest of your page… -->
+  <!-- MID-BANNER -->
+  <section class="mid-banner">
+    <h2>When you're ready to leave paperwork behind,<br/><em>Evergreen</em> is your clean slate.</h2>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="service">
+      <h3>✔ Reduce burnout</h3>
+      <p>Spend less time charting after hours and more time focused on patient care.</p>
+    </div>
+    <div class="service">
+      <h3>✔ Improve notes</h3>
+      <p>Ensure detailed, consistent documentation that supports better outcomes.</p>
+    </div>
+    <div class="service">
+      <h3>✔ Save time</h3>
+      <p>Streamline visits and speed up your workflow with our scribing support.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>Evergreen Work Solutions is a leading provider of remote medical scribing, helping healthcare professionals reclaim their time, improve documentation accuracy, and enhance the patient experience through expert real-time support.</p>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="testimonial">
+      Since partnering with Evergreen, our documentation is cleaner, and our burnout rates have dropped. Highly recommend!
+    </div>
+    <div class="testimonial">
+      Their team feels like an extension of our practice. Responsive, professional, and incredibly helpful.
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    © 2025 Evergreen Work Solutions — All rights reserved.
+  </footer>
 
   <script>
     function toggleMobileMenu() {
       document.getElementById('mobileMenu').classList.toggle('show');
     }
-    // shrink header on scroll
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) header.classList.add('scrolled');
-      else header.classList.remove('scrolled');
+      header.classList.toggle('scrolled', window.scrollY > 50);
     });
   </script>
 </body>
