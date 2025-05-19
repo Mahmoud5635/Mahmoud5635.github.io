@@ -106,7 +106,7 @@
     .hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
     .mobile-menu { display: none; }
 
-    /* HERO */
+    /* HERO SECTION */
     .hero {
       position: relative;
       background: linear-gradient(to bottom, #fff, #f5fbf9);
@@ -128,6 +128,18 @@
       z-index: 0;
     }
 
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -80px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(60,130,100,0.1), transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
     .hero-content {
       position: relative;
       z-index: 1;
@@ -136,51 +148,27 @@
     }
 
     .tagline {
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: var(--dark);
+      opacity: 0.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .headline-accent {
+      font-size: 3.5rem;
       color: var(--accent);
-      margin-bottom: 0.5rem;
-      font-weight: 500;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
-    .hero h1 {
-      font-size: 3rem;
+    .headline-main {
+      font-size: 3.2rem;
       font-weight: 700;
-      margin-bottom: 1rem;
       color: var(--dark);
-    }
-
-    .hero h1 span {
-      display: block;
-    }
-
-    .typewriter-wrapper {
-      display: flex;
-      justify-content: center;
-    }
-
-    .typewriter {
+      border-bottom: 3px solid var(--accent);
       display: inline-block;
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 2px solid var(--accent);
-      animation: typing 2.5s steps(20, end) 2, blink 0.8s step-end 4;
-      animation-fill-mode: forwards;
-      font-weight: 700;
-      font-size: 3rem;
-      color: var(--dark);
-      width: 0;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 16ch }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent }
-      100% { border-color: transparent }
+      padding-bottom: 0.2rem;
+      margin-top: 0.5rem;
     }
 
     .hero p {
@@ -189,21 +177,44 @@
       margin-bottom: 1.5rem;
     }
 
-    .hero .cta-button {
+    .cta-button {
       background: var(--accent);
       color: #fff;
       padding: 0.75rem 1.5rem;
       border-radius: 6px;
       font-weight: 500;
       transition: transform 0.2s;
+      animation: pulse 4s infinite;
     }
 
-    .hero .cta-button:hover {
-      transform: translateY(-2px);
+    .cta-button:hover {
+      transform: scale(1.04);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(60,130,100, 0.4); }
+      70% { box-shadow: 0 0 0 12px rgba(60,130,100, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(60,130,100, 0); }
+    }
+
+    .mini-slogan {
+      margin-top: 1rem;
+      font-style: italic;
+      color: #666;
     }
 
     .hero-image-banner {
       margin-top: 2rem;
+    }
+
+    .label {
+      font-size: 0.75rem;
+      background: var(--accent);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: inline-block;
     }
 
     .hero-image-banner img {
@@ -320,7 +331,7 @@
     }
 
     @media (max-width: 768px) {
-      .hero::before {
+      .hero::before, .hero::after {
         display: none;
       }
 
@@ -397,15 +408,14 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-content">
-      <p class="tagline">#1 Trusted Scribe Partner for Modern Clinics</p>
+      <p class="tagline">#1 TRUSTED SCRIBE PARTNER FOR MODERN CLINICS</p>
       <h1>
-        <span style="color: #3c8264;">Save Time.</span>
-        <div class="typewriter-wrapper">
-          <span class="typewriter">Document Smarter.</span>
-        </div>
+        <span class="headline-accent">Save Time.</span><br/>
+        <span class="headline-main">Document Smarter.</span>
       </h1>
       <p>Trusted virtual medical scribing for faster, better clinical documentation.</p>
       <a href="#contact" class="cta-button">Start Your Free Trial</a>
+      <p class="mini-slogan">Let us handle the notes — you handle the care.</p>
       <div class="trust-logos">
         <img src="logo1.png" alt="NovaCare Systems"/>
         <img src="logo2.png" alt="Clarity Health"/>
@@ -413,6 +423,7 @@
       </div>
     </div>
     <div class="hero-image-banner">
+      <div class="label">Real Scribe. Real Support.</div>
       <img src="Professional woman.png" alt="Professional Medical Scribe"/>
     </div>
   </section>
@@ -459,7 +470,6 @@
     © 2025 Evergreen Work Solutions — All rights reserved.
   </footer>
 
-  <!-- SCRIPT -->
   <script>
     function toggleMobileMenu() {
       document.getElementById('mobileMenu').classList.toggle('show');
