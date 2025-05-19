@@ -38,92 +38,138 @@
     a { text-decoration: none; color: inherit; }
     button { font-family: inherit; cursor: pointer; }
 
-    /* NAVBAR */
+    /* ======= GLASS-MORPHIC HEADER ======= */
     header {
-      background: #fff;
+      position: sticky;
+      top: 0;
+      width: 100%;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(12px);
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      position: sticky; top: 0; z-index: 100;
+      z-index: 100;
+      transition: background 0.3s, padding 0.3s;
     }
     .nav-bar {
       max-width: 1200px;
       margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .nav-left { font-size: 1.125rem; font-weight: 600; }
     .nav-center {
-      display: flex; gap: 2.5rem; list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
     }
     .nav-center a {
-      font-size: 0.875rem; font-weight: 300;
-      position: relative; transition: color 0.3s;
+      font-size: 0.875rem;
+      font-weight: 300;
+      position: relative;
+      transition: color 0.3s;
     }
     .nav-center a::after {
       content: "";
-      position: absolute; bottom: -5px; left: 0;
-      width: 100%; height: 1px; background: var(--accent);
-      transform: scaleX(0); transform-origin: left;
+      position: absolute;
+      bottom: -5px; left: 0;
+      width: 100%; height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
       transition: transform 0.3s;
     }
-    .nav-center a:hover { color: var(--accent); }
-    .nav-center a:hover::after { transform: scaleX(1); }
-
+    .nav-center a:hover {
+      color: var(--accent);
+    }
+    .nav-center a:hover::after {
+      transform: scaleX(1);
+    }
     .nav-right .cta-button {
-      background: var(--accent); color: #fff;
-      padding: 0.5rem 1rem; border-radius: 6px;
-      font-weight: 500; transition: background 0.3s, transform 0.2s;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.2s;
     }
     .nav-right .cta-button:hover {
-      background: #2f6e56; transform: translateY(-1px);
+      background: #2f6e56;
+      transform: translateY(-1px);
     }
-
-    /* Hide on desktop */
     .hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
     .mobile-menu { display: none; }
 
-    /* HERO default */
-    .hero {
-      background: linear-gradient(to bottom, #fff, #f5fbf9);
-      padding: 4rem 1rem 2rem;
-      text-align: left;
+    /* Wave under the header */
+    .header-wave {
+      position: relative;
+      z-index:  99;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
     }
-    .hero-content { max-width: 900px; margin: 0 auto; }
-    .tagline {
-      font-size: 0.875rem; text-transform: uppercase;
-      letter-spacing: 1px; color: var(--accent);
-      margin-bottom: 0.5rem; font-weight: 500;
+    .header-wave svg {
+      display: block;
+      width: 100%;
+      height: 60px;
     }
-    .hero h1 {
-      font-size: 3rem; font-weight: 700;
-      margin-bottom: 1rem; color: var(--dark);
+    .header-wave path {
+      fill: var(--light);
     }
-    .hero h1 span { color: var(--accent); display: block; }
-    .hero p {
-      font-size: 1.125rem; color: #444;
-      margin-bottom: 1.5rem;
-    }
-    .hero .cta-button {
-      background: var(--accent); color: #fff;
-      padding: 0.75rem 1.5rem; border-radius: 6px;
-      font-weight: 500; transition: transform 0.2s;
-    }
-    .hero .cta-button:hover { transform: translateY(-2px); }
 
-    /* New: side‐by‐side layout on desktop */
+    /* ======= HERO ======= */
     .hero {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(to bottom, #fff, #f5fbf9);
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       gap: 2rem;
-      padding: 3rem 1rem 2rem;
+      padding: 4rem 1rem 2rem;
+      text-align: left;
     }
     .hero-content {
       flex: 1 1 0;
+      max-width: 900px;
+    }
+    .tagline {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+    .hero h1 span {
+      color: var(--accent);
+      display: block;
+    }
+    .hero p {
+      font-size: 1.125rem;
+      color: #444;
+      margin-bottom: 1.5rem;
+    }
+    .hero .cta-button {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: transform 0.2s;
+    }
+    .hero .cta-button:hover {
+      transform: translateY(-2px);
     }
     .hero-image-banner {
       flex: 0 0 40%;
       max-width: 40%;
-      margin: 0;
     }
     .hero-image-banner img {
       width: 100%;
@@ -133,7 +179,7 @@
       object-fit: cover;
     }
 
-    /* Trust logos */
+    /* ======= TRUST LOGOS ======= */
     .trust-logos {
       display: flex;
       flex-wrap: wrap;
@@ -147,79 +193,98 @@
       max-width: 100%;
     }
 
-    /* MID-BANNER */
+    /* ======= MID-BANNER ======= */
     .mid-banner {
       background: linear-gradient(to bottom, var(--cloud), var(--light));
-      padding: 3rem 1rem; text-align: center;
+      padding: 3rem 1rem;
+      text-align: center;
     }
     .mid-banner h2 { font-size: 1.625rem; font-weight: 400; }
 
-    /* SERVICES */
+    /* ======= SERVICES ======= */
     .services {
       padding: 3rem 1rem;
-      display: flex; flex-wrap: wrap;
-      justify-content: center; gap: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
       background: #fff;
     }
     .service {
-      flex: 1 1 250px; max-width: 300px;
-      padding: 1.5rem; text-align: center;
+      flex: 1 1 250px;
+      max-width: 300px;
+      padding: 1.5rem;
+      text-align: center;
     }
     .service h3 {
-      font-size: 1.25rem; color: var(--accent);
+      font-size: 1.25rem;
+      color: var(--accent);
       margin-bottom: 0.75rem;
     }
     .service p { color: #555; }
 
-    /* ABOUT */
+    /* ======= ABOUT ======= */
     .about {
-      max-width: 900px; margin: 0 auto;
-      padding: 3rem 1rem; text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1rem;
+      text-align: center;
       background: #fff;
     }
     .about h2 {
-      font-size: 2rem; margin-bottom: 1rem;
+      font-size: 2rem;
+      margin-bottom: 1rem;
       color: var(--dark);
     }
     .about p {
-      font-size: 1rem; color: #444;
+      font-size: 1rem;
+      color: #444;
       line-height: 1.6;
     }
 
-    /* TESTIMONIALS */
+    /* ======= TESTIMONIALS ======= */
     .testimonials {
-      background: var(--cloud); padding: 3rem 1rem;
+      background: var(--cloud);
+      padding: 3rem 1rem;
       text-align: center;
     }
     .testimonial {
-      max-width: 600px; margin: 0 auto 2rem;
-      font-style: italic; color: #333;
-      position: relative; padding-left: 1.5rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-style: italic;
+      color: #333;
+      position: relative;
+      padding-left: 1.5rem;
     }
     .testimonial::before {
-      content: "“"; font-size: 3rem; color: var(--accent);
-      position: absolute; left: 0; top: -0.5rem;
+      content: "“";
+      font-size: 3rem;
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      top: -0.5rem;
     }
 
-    /* FOOTER */
+    /* ======= FOOTER ======= */
     footer {
-      background: var(--light); color: #777;
-      text-align: center; padding: 2rem 1rem;
-      font-size: 0.875rem; border-top: 1px solid #e0e0e0;
+      background: var(--light);
+      color: #777;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.875rem;
+      border-top: 1px solid #e0e0e0;
     }
 
-    /* MOBILE STYLES */
+    /* ======= MOBILE ======= */
     @media (max-width: 768px) {
       .hero {
         flex-direction: column;
         padding: 2rem 1rem;
       }
       .hero-image-banner {
-        flex: none;
         max-width: 100%;
         margin-top: 1.5rem;
       }
-
       .nav-center,
       .nav-right {
         display: none;
@@ -249,22 +314,17 @@
       .mobile-menu a {
         margin-bottom: 1rem;
         font-size: 1rem;
-        color: var(--dark);
       }
       .mobile-menu .cta-button {
         margin-top: 0.5rem;
         text-align: center;
       }
-
-      /* Mobile override: logos side by side */
       .trust-logos {
         flex-wrap: nowrap;
-        justify-content: flex-start;
         gap: 0.5rem;
       }
       .trust-logos img {
         width: 30%;
-        height: auto;
       }
     }
   </style>
@@ -287,6 +347,13 @@
       <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
     </div>
   </header>
+
+  <!-- SVG WAVE -->
+  <div class="header-wave">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path d="M0,30 C480,90 960,-30 1440,30 L1440,60 L0,60 Z"/>
+    </svg>
+  </div>
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
