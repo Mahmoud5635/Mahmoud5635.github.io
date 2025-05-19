@@ -22,6 +22,19 @@
       --cloud: #eaf6f3;
       --text: #455467;
       --section-spacing: 100px;
+       --bg: var(--light);
+  --fg: var(--text);
+}
+[data-theme="dark"] {
+  --bg: #0a2540;
+  --fg: #f8f8f8;
+  --accent: #4d9775;
+  /* any other tweaks like shadows or overlays */
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
     }
     *, *::before, *::after {
       box-sizing: border-box;
@@ -631,6 +644,7 @@
       <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
       <a href="#contact" class="cta-button" onclick="toggleMobileMenu()">Schedule a Meeting</a>
     </div>
+    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
   </header>
 
   <!-- HERO -->
@@ -819,5 +833,15 @@
     }
     feather.replace();
   </script>
+  <script>
+  const btn = document.getElementById('theme-toggle');
+  btn.addEventListener('click', () => {
+    // flip between '' (light) and 'dark'
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    // swap icon
+    btn.textContent = next ? '☀️' : '🌙';
+  });
+</script>
 </body>
 </html>
