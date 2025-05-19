@@ -583,6 +583,23 @@
       color: rgba(255,255,255,0.6);
       font-size: 14px;
     }
+    /* 1. Remove the green “status” dot next to the logo */
+.nav-left::before {
+  display: none;
+}
+
+/* 2. Fix the 3rd logo overflow on mobile */
+@media (max-width: 768px) {
+  .trust-logos {
+    justify-content: center;   /* center all logos in the row */
+    gap: 1.5rem;               /* tighten spacing */
+  }
+  .trust-logos img {
+    max-width: 100px;          /* cap each logo’s width */
+    height: auto;
+  }
+}
+
   </style>
 </head>
 
