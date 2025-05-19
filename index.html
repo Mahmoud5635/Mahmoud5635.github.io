@@ -5,27 +5,11 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Evergreen Work Solutions</title>
 
-  <!-- Basic SEO -->
-  <meta name="description" content="Evergreen Work Solutions—trusted virtual medical scribes boosting efficiency and care quality. Schedule a free trial today." />
-
-  <!-- Open Graph for social previews -->
-  <meta property="og:title" content="Evergreen Work Solutions" />
-  <meta property="og:description" content="Trusted virtual medical scribing for faster, better clinical documentation." />
-  <meta property="og:image" content="https://yourdomain.com/path/to/preview-image.jpg" />
-  <meta property="og:url" content="https://yourdomain.com" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Evergreen Work Solutions" />
-  <meta name="twitter:description" content="Trusted virtual medical scribes boosting efficiency and care quality." />
-  <meta name="twitter:image" content="https://yourdomain.com/path/to/preview-image.jpg" />
-
   <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-
+  
   <!-- Feather Icons -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
 
@@ -38,13 +22,6 @@
       --cloud: #eaf6f3;
       --text: #455467;
       --section-spacing: 100px;
-      --bg: var(--light);
-      --fg: var(--text);
-    }
-    [data-theme="dark"] {
-      --bg: #0a2540;
-      --fg: #f8f8f8;
-      --accent: #4d9775;
     }
     *, *::before, *::after {
       box-sizing: border-box;
@@ -54,157 +31,787 @@
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--fg);
+      background: var(--light);
+      color: var(--text);
       line-height: 1.8;
     }
+    a { text-decoration: none; color: inherit; }
 
-    /* existing CSS rules... */
-
-    /* Testimonials carousel styles */
-    .testimonials-carousel {
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 1rem;
-      padding: 1rem;
-    }
-    .testimonials-carousel .testimonial-card {
-      scroll-snap-align: start;
-      flex: 0 0 80%;
-      max-width: 400px;
+    /* Subtle dot pattern */
+    .dot-pattern {
+      background-image: radial-gradient(var(--text) 1px, transparent 1px);
+      background-size: 30px 30px;
+      opacity: 0.03;
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
     }
 
-    /* FAQ styles */
-    .faq-answer { display: none; padding: 0 1rem; }
-    .faq-question { width: 100%; text-align: left; background: none; border: none; font-weight: 600; cursor: pointer; }
+    /* TRUST LOGOS */
+    .trust-logos {
+      display: flex; flex-wrap: wrap; gap: 3rem;
+      margin-top: 3rem; align-items: center; justify-content: flex-start;
+    }
+    .trust-logos img {
+      height: 36px; max-width: 120px; opacity: 0.85;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .trust-logos img:hover {
+      opacity: 1; transform: translateY(-3px);
+    }
+    @media (max-width: 768px) {
+      .trust-logos { flex-wrap: nowrap; justify-content: space-between; }
+      .trust-logos img { width: 30%; height: auto; max-width: none; }
+    }
 
-    /* Newsletter styles */
-    .newsletter-form { margin-top: 2rem; text-align: center; }
-    .newsletter-form input { padding: 0.5rem; width: 200px; }
-    .newsletter-form button { padding: 0.5rem 1rem; margin-left: 0.5rem; }
+    /* HEADER */
+    header {
+      position: sticky; top: 0; width: 100%;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      z-index: 100;
+    }
+    .nav-bar {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px;
+    }
+    .nav-left {
+      font-size: 1.25rem; font-weight: 600; color: var(--dark);
+      display: flex; align-items: center;
+    }
+    .nav-left::before {
+      content: ""; display: inline-block;
+      width: 12px; height: 12px; background: var(--accent);
+      border-radius: 50%; margin-right: 8px;
+    }
+    .nav-center {
+      display: flex; gap: 2.5rem; list-style: none;
+    }
+    .nav-center a {
+      font-size: 0.9rem; font-weight: 500; position: relative;
+      letter-spacing: 0.3px; transition: color 0.3s;
+    }
+    .nav-center a::after {
+      content: ""; position: absolute; bottom: -4px; left: 0;
+      width: 100%; height: 2px; background: var(--accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .nav-center a:hover { color: var(--accent); }
+    .nav-center a:hover::after { transform: scaleX(1); }
 
-    /* Chat icon styles */
-    #chat-icon {
-      position: fixed;
-      bottom: 1.5rem;
-      right: 1.5rem;
-      background: var(--accent);
-      color: #fff;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
+    .nav-right .cta-button {
+      background: var(--accent); color: #fff;
+      padding: 0.7rem 1.4rem; border-radius: 8px;
+      font-weight: 500; transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(60,130,100,0.2);
+    }
+    .nav-right .cta-button:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(60,130,100,0.25);
+    }
+
+    .hamburger {
+      display: none; font-size: 1.5rem;
+      cursor: pointer; z-index: 200;
+    }
+
+    /* MOBILE MENU */
+    .mobile-menu {
+      position: absolute; top: 100%; left: 0;
+      width: 100%; background: #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease; z-index: 101;
+      display: flex; flex-direction: column; text-align: center;
+    }
+    .mobile-menu.show { max-height: 500px; }
+    .mobile-menu a {
+      padding: 1rem; border-bottom: 1px solid #eee;
+      font-size: 1rem; color: var(--dark);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .cta-button {
+      margin: 1rem auto; background: var(--accent);
+      color: #fff; padding: 0.75rem 1.5rem; border-radius: 8px;
+      font-weight: 500; width: 80%; max-width: 250px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-bar { padding: 15px 20px; }
+      .nav-center, .nav-right { display: none; }
+      .hamburger { display: block; }
+    }
+
+    /* HERO */
+    .hero {
+      background: #fff; padding: 60px 20px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ""; position: absolute;
+      top: -200px; right: -200px;
+      width: 500px; height: 500px;
+      border-radius: 50%; background: var(--cloud);
+      opacity: 0.3; z-index: 0;
+    }
+    .hero-content {
+      max-width: 1200px; margin: auto;
+      display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between;
+      gap: 60px; position: relative; z-index: 1;
+    }
+    .hero-text {
+      flex: 1; max-width: 600px;
+      animation: fadeInUp 0.8s ease-in-out;
+    }
+    .hero-text h1 {
+      font-size: 52px; font-weight: 700;
+      line-height: 1.15; margin-bottom: 25px;
+      color: var(--dark);
+    }
+    .hero-text h1 span {
+      color: var(--accent); position: relative;
+      display: inline-block;
+    }
+    .hero-text h1 span::after {
+      content: ""; position: absolute;
+      bottom: 5px; left: 0;
+      width: 100%; height: 8px;
+      background: var(--accent); opacity: 0.15;
+      z-index: -1;
+    }
+    .hero-text p {
+      font-size: 19px; margin-bottom: 38px;
+      color: var(--text); line-height: 1.7;
+    }
+    .hero-text .cta-button {
+      background: var(--accent); color: #fff;
+      padding: 15px 32px; border-radius: 8px;
+      font-weight: 500; letter-spacing: 0.3px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 6px 15px rgba(60,130,100,0.25);
+      position: relative; overflow: hidden;
+    }
+    .hero-text .cta-button::before {
+      content: ""; position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.2);
+      transition: left 0.7s ease;
+    }
+    .hero-text .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(60,130,100,0.3);
+    }
+    .hero-text .cta-button:hover::before {
+      left: 100%;
+    }
+
+    .hero-image {
+      flex: 0 0 45%; max-width: 45%;
+      position: relative; animation: fadeInRight 0.9s ease-in-out;
+    }
+    .hero-image img {
+      width: 100%; border-radius: 16px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+      object-fit: cover; position: relative; z-index: 2;
+    }
+    .hero-image::after {
+      content: ""; position: absolute;
+      top: 20px; right: -20px;
+      width: 100%; height: 100%;
+      border: 3px solid var(--accent);
+      border-radius: 16px; opacity: 0.2; z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 40px 20px 60px; }
+      .hero-content { flex-direction: column; align-items: flex-start; }
+      .hero-image { display: none; }
+      .hero-text h1 { font-size: 38px; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* MID-BANNER */
+    .mid-banner {
+      background: linear-gradient(135deg, var(--cloud), #f0f8f6);
+      padding: 80px 20px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .mid-banner::before {
+      content: ""; position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%; background: #fff;
+      opacity: 0.1; top: -150px; left: -150px;
+    }
+    .mid-banner h2 {
+      font-size: 28px; font-weight: 500;
+      max-width: 800px; margin: 0 auto;
+      line-height: 1.5; color: var(--dark);
+    }
+    .mid-banner h2 em {
+      font-style: normal; color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* SERVICES */
+    .services-section {
+      padding: var(--section-spacing) 20px;
+      background: #fff; position: relative;
+    }
+    .services-heading {
+      text-align: center; margin-bottom: 60px;
+    }
+    .services-heading h2 {
+      font-size: 34px; color: var(--dark);
+      margin-bottom: 20px;
+    }
+    .services-heading p {
+      color: var(--text);
+      max-width: 600px; margin: 0 auto;
+    }
+    .services {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; flex-wrap: wrap;
+      justify-content: center; gap: 30px;
+    }
+    .service {
+      flex: 1; min-width: 300px; max-width: 350px;
+      padding: 40px 30px; background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+      text-align: left; position: relative;
+      border: 1px solid rgba(0,0,0,0.03);
+      transition: all 0.3s ease;
+    }
+    .service:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+    .service-icon {
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      width: 60px; height: 60px;
+      background: var(--cloud); border-radius: 12px;
+      margin-bottom: 25px; color: var(--accent);
+    }
+    .service h3 {
+      color: var(--dark); margin-bottom: 15px;
+      font-size: 22px; font-weight: 600;
+    }
+    .service p {
+      color: var(--text); margin-bottom: 20px;
+    }
+    .service-link {
+      color: var(--accent); font-weight: 500;
+      font-size: 15px; display: inline-flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      z-index: 200;
     }
-    #chat-icon:hover { transform: translateY(-3px); }
+    .service-link svg {
+      margin-left: 5px; transition: transform 0.3s;
+    }
+    .service-link:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* hide the accent-highlight underline on that span */
+    .hero-text h1 span::after {
+      display: none;
+    }
+    /* testimonial hover pop */
+    .testimonial-card {
+      transition: all 0.3s ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ABOUT */
+    .about-section {
+      background: var(--light);
+      padding: var(--section-spacing) 20px;
+    }
+    .about {
+      max-width: 900px; margin: 0 auto;
+      text-align: center; position: relative;
+    }
+    .about h2 {
+      font-size: 34px; margin-bottom: 25px;
+      color: var(--dark); display: inline-block;
+      position: relative;
+    }
+    .about h2::after {
+      content: ""; position: absolute;
+      bottom: -10px; left: 50%;
+      transform: translateX(-50%);
+      width: 80px; height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    .about p {
+      color: var(--text);
+      font-size: 17px; line-height: 1.8;
+      margin-top: 30px;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-section {
+      background: #fff;
+      padding: var(--section-spacing) 20px;
+      position: relative;
+    }
+    .testimonials-heading {
+      text-align: center; margin-bottom: 60px;
+    }
+    .testimonials-heading h2 {
+      font-size: 34px; color: var(--dark);
+      margin-bottom: 15px;
+    }
+    .testimonials {
+      max-width: 1000px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: 30px;
+    }
+    .testimonial-card {
+      flex: 1; min-width: 300px;
+      background: #fff; border-radius: 16px;
+      padding: 35px; position: relative;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+    .testimonial-card::before {
+      content: "“";
+      font-size: 100px; color: var(--accent);
+      opacity: 0.15; position: absolute;
+      top: 10px; left: 20px;
+      font-family: serif; line-height: 1;
+    }
+    .testimonial-content {
+      position: relative; z-index: 1;
+      font-style: italic; color: var(--text);
+      margin-bottom: 25px; line-height: 1.8;
+    }
+    .testimonial-author {
+      display: flex; align-items: center;
+    }
+    .author-avatar {
+      width: 50px; height: 50px;
+      background: var(--cloud); border-radius: 50%;
+      margin-right: 15px;
+      display: flex; align-items: center;
+      justify-content: center; color: var(--accent);
+      font-weight: bold;
+    }
+    .author-info h4 {
+      color: var(--dark); font-weight: 600;
+      margin-bottom: 5px;
+    }
+    .author-info p {
+      color: var(--text); font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      background: var(--cloud);
+      padding: var(--section-spacing) 20px;
+      position: relative; overflow: hidden;
+    }
+    .contact-section::before {
+      content: ""; position: absolute;
+      bottom: -200px; right: -200px;
+      width: 400px; height: 400px;
+      background: var(--accent);
+      border-radius: 50%; opacity: 0.05;
+    }
+    .contact-container {
+      max-width: 1000px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: 50px;
+    }
+    .contact-info {
+      flex: 1; min-width: 300px;
+    }
+    .contact-info h2 {
+      font-size: 34px; color: var(--dark);
+      margin-bottom: 20px;
+    }
+    .contact-info p {
+      color: var(--text);
+      margin-bottom: 30px; max-width: 450px;
+    }
+    .contact-method {
+      display: flex; align-items: center;
+      margin-bottom: 20px;
+    }
+    .contact-icon {
+      width: 42px; height: 42px;
+      background: #fff; border-radius: 8px;
+      display: flex; align-items: center;
+      justify-content: center; margin-right: 15px;
+      color: var(--accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .contact-text h4 {
+      color: var(--dark); font-weight: 600;
+      margin-bottom: 5px;
+    }
+    .contact-text p {
+      color: var(--text); font-size: 15px;
+      margin: 0;
+    }
+    .contact-form {
+      flex: 1; min-width: 300px;
+      background: #fff; padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    }
+    .form-group {
+      margin-bottom: 25px;
+    }
+    .form-group label {
+      display: block; margin-bottom: 8px;
+      color: var(--dark); font-weight: 500;
+      font-size: 15px;
+    }
+    .form-control {
+      width: 100%; padding: 15px;
+      border: 1px solid #e0e0e0; border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px; transition: all 0.3s;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(60,130,100,0.1);
+    }
+    textarea.form-control {
+      min-height: 120px; resize: vertical;
+    }
+    .submit-btn {
+      background: var(--accent); color: #fff;
+      border: none; padding: 15px 30px;
+      border-radius: 8px; font-weight: 500;
+      cursor: pointer; transition: all 0.3s;
+      box-shadow: 0 6px 15px rgba(60,130,100,0.2);
+    }
+    .submit-btn:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(60,130,100,0.25);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark); color: #fff;
+      padding: 60px 20px 30px;
+    }
+    .footer-container {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: 50px;
+      margin-bottom: 50px;
+    }
+    .footer-info {
+      flex: 2; min-width: 300px;
+    }
+    .footer-logo {
+      font-size: 24px; font-weight: 600;
+      display: flex; align-items: center;
+      margin-bottom: 20px;
+    }
+    .footer-logo::before {
+      content: ""; display: inline-block;
+      width: 10px; height: 10px;
+      background: var(--accent);
+      border-radius: 50%; margin-right: 8px;
+    }
+    .footer-desc {
+      color: rgba(255,255,255,0.7);
+      max-width: 400px; margin-bottom: 25px;
+    }
+    .social-links {
+      display: flex; gap: 15px;
+    }
+    .social-link {
+      width: 40px; height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; transition: all 0.3s;
+    }
+    .social-link:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+    .footer-links {
+      flex: 1; min-width: 160px;
+    }
+    .footer-links h3 {
+      font-size: 18px; font-weight: 600;
+      color: #fff; margin-bottom: 20px;
+    }
+    .footer-menu {
+      list-style: none;
+    }
+    .footer-menu li {
+      margin-bottom: 12px;
+    }
+    .footer-menu a {
+      color: rgba(255,255,255,0.7);
+      transition: all 0.3s;
+    }
+    .footer-menu a:hover {
+      color: #fff; padding-left: 5px;
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+    /* 1. Remove the green “status” dot next to the logo */
+.nav-left::before {
+  display: none;
+}
+
+/* 2. Fix the 3rd logo overflow on mobile */
+@media (max-width: 768px) {
+  .trust-logos {
+    justify-content: center;   /* center all logos in the row */
+    gap: 1.5rem;               /* tighten spacing */
+  }
+  .trust-logos img {
+    max-width: 100px;          /* cap each logo’s width */
+    height: auto;
+  }
+}
 
   </style>
 </head>
+
 <body>
+
+  <!-- HEADER -->
   <header>
-    <!-- existing header content -->
-    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+    <div class="nav-bar">
+      <div class="nav-left">Evergreen Work Solutions</div>
+
+      <ul class="nav-center desktop-nav">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-right desktop-nav">
+        <a href="#contact" class="cta-button">Schedule a Meeting</a>
+      </div>
+
+      <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services" onclick="toggleMobileMenu()">Services</a>
+      <a href="#about" onclick="toggleMobileMenu()">About</a>
+      <a href="#testimonials" onclick="toggleMobileMenu()">Testimonials</a>
+      <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+      <a href="#contact" class="cta-button" onclick="toggleMobileMenu()">Schedule a Meeting</a>
+    </div>
   </header>
 
-  <!-- existing body content... -->
-
-  <!-- Testimonials Section -->
-  <section class="testimonials-section">
-    <h2 class="testimonials-heading">What Our Clients Say</h2>
-    <div class="testimonials-carousel">
-      <div class="testimonial-card">…</div>
-      <div class="testimonial-card">…</div>
-      <div class="testimonial-card">…</div>
-      <div class="testimonial-card">…</div>
-      <div class="testimonial-card">…</div>
-    </div>
-  </section>
-
-  <!-- FAQ / Resources Section -->
-  <section class="faq-section">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <button class="faq-question">How secure is my data?</button>
-      <div class="faq-answer">We use HIPAA-compliant cloud servers with AES-256 encryption...</div>
-    </div>
-    <!-- more items -->
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <!-- existing footer content -->
-    <form class="newsletter-form">
-      <label for="newsletter-email">Join our newsletter</label>
-      <div>
-        <input type="email" id="newsletter-email" placeholder="Your email" required />
-        <button type="submit">Subscribe</button>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="dot-pattern"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1><span>Save Time.</span><br>Document Smarter.</h1>
+        <p>Trusted virtual medical scribing for faster, better clinical documentation.</p>
+        <a href="#contact" class="cta-button">Start Your Free Trial</a>
+        <div class="trust-logos">
+          <img src="logo1.png" alt="NovaCare Systems">
+          <img src="logo2.png" alt="Clarity Health">
+          <img src="logo3.png" alt="Pillar Diagnostics">
+        </div>
       </div>
-    </form>
+      <div class="hero-image">
+        <img src="Professional woman.png" alt="Professional Medical Scribe">
+      </div>
+    </div>
+  </section>
+
+  <!-- MID-BANNER -->
+  <section class="mid-banner">
+    <h2>When you're ready to leave paperwork behind,<br><em>Evergreen</em> is your clean slate.</h2>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section" id="services">
+    <div class="services-heading">
+      <h2>Our Services</h2>
+      <p>We help healthcare providers focus on what matters most - patient care.</p>
+    </div>
+    <div class="services">
+      <div class="service">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+        </div>
+        <h3>Reduce Burnout</h3>
+        <p>Spend less time charting after hours and more time focused on patient care.</p>
+        <a href="#contact" class="service-link">Learn more <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        </div>
+        <h3>Improve Notes</h3>
+        <p>Ensure detailed, consistent documentation that supports better outcomes.</p>
+        <a href="#contact" class="service-link">Learn more <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+
+      <div class="service">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        </div>
+        <h3>Save Time</h3>
+        <p>Streamline visits and speed up your workflow with our scribing support.</p>
+        <a href="#contact" class="service-link">Learn more <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="about">
+    <div class="about">
+      <h2>About Evergreen</h2>
+      <p>Evergreen Work Solutions was founded by healthcare professionals who understand the documentation burden facing today's medical providers. Our mission is to alleviate that burden through technology-enabled services that put patient care back at the center of medicine.</p>
+      <p>With over 10 years of experience in medical documentation, our team combines clinical expertise with cutting-edge technology to deliver accurate, timely, and compliant documentation services.</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="testimonials-heading">
+      <h2>What Our Clients Say</h2>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          “Evergreen has transformed our practice. I save at least 2 hours every day on documentation, which means more time with my family and less burnout.”
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">SJ</div>
+          <div class="author-info">
+            <h4>Dr. Sarah Johnson</h4>
+            <p>Family Medicine Physician</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          “The scribes at Evergreen are phenomenal. They capture every detail accurately, and our documentation quality scores have improved significantly.”
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">MC</div>
+          <div class="author-info">
+            <h4>Dr. Michael Chen</h4>
+            <p>Emergency Medicine Director</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          “Implementation was seamless and the ROI has been incredible. We're seeing more patients with less administrative burden on our providers.”
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">LR</div>
+          <div class="author-info">
+            <h4>Lisa Rodriguez</h4>
+            <p>Practice Manager</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Contact Us</h2>
+        <p>Ready to streamline your documentation? Schedule a free trial or ask us any questions.</p>
+        <div class="contact-method">
+          <div class="contact-icon"><i data-feather="mail"></i></div>
+          <div class="contact-text">
+            <h4>Email</h4>
+            <p>info@evergreenwork.com</p>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-icon"><i data-feather="phone"></i></div>
+          <div class="contact-text">
+            <h4>Phone</h4>
+            <p>(123) 456-7890</p>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control" placeholder="Your Name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="form-control" placeholder="Your Email" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" class="form-control" placeholder="Your Message"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-info">
+        <div class="footer-logo">Evergreen Work Solutions</div>
+        <p class="footer-desc">At Evergreen, we're committed to supporting healthcare providers with secure, accurate, and efficient documentation solutions.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i data-feather="facebook"></i></a>
+          <a href="#" class="social-link"><i data-feather="twitter"></i></a>
+          <a href="#" class="social-link"><i data-feather="linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul class="footer-menu">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="copyright">&copy; 2025 Evergreen Work Solutions. All rights reserved.</div>
   </footer>
 
-  <!-- Chat Icon -->
-  <div id="chat-icon" title="Chat with us">💬</div>
-
-  <!-- Analytics & Heatmaps -->
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments) }
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-
-  <!-- Hotjar Tracking Code -->
-  <script>
-    (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:YOUR_HOTJAR_ID,hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-  </script>
-
-  <!-- Theme Toggle Script -->
-  <script>
-    const btn = document.getElementById('theme-toggle');
-    btn.addEventListener('click', () => {
-      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      btn.textContent = next ? '☀️' : '🌙';
-    });
-  </script>
-
-  <!-- FAQ Toggle Script -->
-  <script>
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => btn.classList.toggle('active'));
-    });
-  </script>
-
-  <!-- Live Chat Widget -->
-  <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-      var s1=document.createElement('script'), s0=document.getElementsByTagName('script')[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/YOUR_TAWK_ID/default';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-    })();
-  </script>
-
-  <!-- Existing mobile menu & feather replace -->
   <script>
     function toggleMobileMenu() {
       const menu = document.getElementById('mobileMenu');
