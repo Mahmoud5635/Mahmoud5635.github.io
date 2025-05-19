@@ -65,12 +65,9 @@
       transform: scaleX(0); transform-origin: left;
       transition: transform 0.3s;
     }
-    .nav-center a:hover {
-      color: var(--accent);
-    }
-    .nav-center a:hover::after {
-      transform: scaleX(1);
-    }
+    .nav-center a:hover { color: var(--accent); }
+    .nav-center a:hover::after { transform: scaleX(1); }
+
     .nav-right .cta-button {
       background: var(--accent); color: #fff;
       padding: 0.5rem 1rem; border-radius: 6px;
@@ -84,23 +81,11 @@
     .hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
     .mobile-menu { display: none; }
 
-    /* HERO */
+    /* HERO default */
     .hero {
       background: linear-gradient(to bottom, #fff, #f5fbf9);
-      padding: 4rem 1rem 2rem; text-align: left;
-          display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-  }
-
-  .hero-content,
-  .hero-image-banner {
-    flex: 1 1 0;
-  }
-  .hero-image-banner {
-    max-width: 45%;
-  }
+      padding: 4rem 1rem 2rem;
+      text-align: left;
     }
     .hero-content { max-width: 900px; margin: 0 auto; }
     .tagline {
@@ -114,7 +99,8 @@
     }
     .hero h1 span { color: var(--accent); display: block; }
     .hero p {
-      font-size: 1.125rem; color: #444; margin-bottom: 1.5rem;
+      font-size: 1.125rem; color: #444;
+      margin-bottom: 1.5rem;
     }
     .hero .cta-button {
       background: var(--accent); color: #fff;
@@ -123,7 +109,31 @@
     }
     .hero .cta-button:hover { transform: translateY(-2px); }
 
-    /* Trust logos default: left-aligned under button */
+    /* New: side‐by‐side layout on desktop */
+    .hero {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 3rem 1rem 2rem;
+    }
+    .hero-content {
+      flex: 1 1 0;
+    }
+    .hero-image-banner {
+      flex: 0 0 40%;
+      max-width: 40%;
+      margin: 0;
+    }
+    .hero-image-banner img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      object-fit: cover;
+    }
+
+    /* Trust logos */
     .trust-logos {
       display: flex;
       flex-wrap: wrap;
@@ -135,15 +145,6 @@
       height: 36px;
       width: auto;
       max-width: 100%;
-    }
-
-    .hero-image-banner {
-      max-width: 900px; margin: 2rem auto 0;
-    }
-    .hero-image-banner img {
-      width: 100%; border-radius: 16px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-      object-fit: cover;
     }
 
     /* MID-BANNER */
@@ -209,6 +210,16 @@
 
     /* MOBILE STYLES */
     @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        padding: 2rem 1rem;
+      }
+      .hero-image-banner {
+        flex: none;
+        max-width: 100%;
+        margin-top: 1.5rem;
+      }
+
       .nav-center,
       .nav-right {
         display: none;
@@ -245,7 +256,7 @@
         text-align: center;
       }
 
-      /* Mobile override: three logos side by side with tighter spacing */
+      /* Mobile override: logos side by side */
       .trust-logos {
         flex-wrap: nowrap;
         justify-content: flex-start;
