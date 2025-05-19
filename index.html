@@ -1,369 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Evergreen Work Solutions</title>
-
-  <!-- Google Font: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minimal Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --dark: #0a2540;
-      --accent: #3c8264;
-      --light: #f8f8f8;
-      --cloud: #eaf6f3;
+      --bg: #f4f4f4;
+      --white: #ffffff;
+      --black: #222222;
+      --gray: #888888;
     }
 
-    /* Reset & base */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      scroll-behavior: smooth;
     }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--light);
-      color: var(--dark);
+      background: var(--bg);
+      color: var(--black);
       line-height: 1.6;
-      overflow-x: hidden;
+      padding: 0 1rem;
     }
-    a { text-decoration: none; color: inherit; }
-    button { font-family: inherit; cursor: pointer; }
 
-    /* NAVBAR */
-    header {
-      background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      position: sticky; top: 0; z-index: 100;
-    }
-    .nav-bar {
-      max-width: 1200px;
+    .container {
+      max-width: 1000px;
       margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px;
-    }
-    .nav-left { font-size: 1.125rem; font-weight: 600; }
-    .nav-center {
-      display: flex; gap: 2.5rem; list-style: none;
-    }
-    .nav-center a {
-      font-size: 0.875rem; font-weight: 300;
-      position: relative; transition: color 0.3s;
-    }
-    .nav-center a::after {
-      content: "";
-      position: absolute; bottom: -5px; left: 0;
-      width: 100%; height: 1px; background: var(--accent);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.3s;
-    }
-    .nav-center a:hover { color: var(--accent); }
-    .nav-center a:hover::after { transform: scaleX(1); }
-
-    .nav-right .cta-button {
-      background: var(--accent); color: #fff;
-      padding: 0.5rem 1rem; border-radius: 6px;
-      font-weight: 500; transition: background 0.3s, transform 0.2s;
-    }
-    .nav-right .cta-button:hover {
-      background: #2f6e56; transform: translateY(-1px);
     }
 
-    /* Hide on desktop */
-    .hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
-    .mobile-menu { display: none; }
+    header, footer, section {
+      padding: 4rem 0;
+    }
 
-    /* HERO default */
-    .hero {
-      background: linear-gradient(to bottom, #fff, #f5fbf9);
-      padding: 4rem 1rem 2rem;
-      text-align: left;
-    }
-    .hero-content { max-width: 900px; margin: 0 auto; }
-    .tagline {
-      font-size: 0.875rem; text-transform: uppercase;
-      letter-spacing: 1px; color: var(--accent);
-      margin-bottom: 0.5rem; font-weight: 500;
-    }
-    .hero h1 {
-      font-size: 3rem; font-weight: 700;
-      margin-bottom: 1rem; color: var(--dark);
-    }
-    .hero h1 span { color: var(--accent); display: block; }
-    .hero p {
-      font-size: 1.125rem; color: #444;
-      margin-bottom: 1.5rem;
-    }
-    .hero .cta-button {
-      background: var(--accent); color: #fff;
-      padding: 0.75rem 1.5rem; border-radius: 6px;
-      font-weight: 500; transition: transform 0.2s;
-    }
-    .hero .cta-button:hover { transform: translateY(-2px); }
-
-    /* New: side‐by‐side layout on desktop */
-    .hero {
+    header {
       display: flex;
-      align-items: flex-start;
       justify-content: space-between;
-      gap: 2rem;
-      padding: 3rem 1rem 2rem;
-    }
-    .hero-content {
-      flex: 1 1 0;
-    }
-    .hero-image-banner {
-      flex: 0 0 40%;
-      max-width: 40%;
-      margin: 0;
-    }
-    .hero-image-banner img {
-      width: 100%;
-      height: auto;
-      border-radius: 16px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-      object-fit: cover;
+      align-items: center;
     }
 
-    /* Trust logos */
-    .trust-logos {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .trust-logos img {
-      height: 36px;
-      width: auto;
-      max-width: 100%;
+    header .email {
+      font-size: 0.9rem;
     }
 
-    /* MID-BANNER */
-    .mid-banner {
-      background: linear-gradient(to bottom, var(--cloud), var(--light));
-      padding: 3rem 1rem; text-align: center;
-    }
-    .mid-banner h2 { font-size: 1.625rem; font-weight: 400; }
-
-    /* SERVICES */
-    .services {
-      padding: 3rem 1rem;
-      display: flex; flex-wrap: wrap;
-      justify-content: center; gap: 2rem;
-      background: #fff;
-    }
-    .service {
-      flex: 1 1 250px; max-width: 300px;
-      padding: 1.5rem; text-align: center;
-    }
-    .service h3 {
-      font-size: 1.25rem; color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-    .service p { color: #555; }
-
-    /* ABOUT */
-    .about {
-      max-width: 900px; margin: 0 auto;
-      padding: 3rem 1rem; text-align: center;
-      background: #fff;
-    }
-    .about h2 {
-      font-size: 2rem; margin-bottom: 1rem;
-      color: var(--dark);
-    }
-    .about p {
-      font-size: 1rem; color: #444;
-      line-height: 1.6;
+    header .btns button {
+      background: var(--white);
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      margin-left: 0.5rem;
+      cursor: pointer;
     }
 
-    /* TESTIMONIALS */
-    .testimonials {
-      background: var(--cloud); padding: 3rem 1rem;
+    header nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .hero {
       text-align: center;
     }
-    .testimonial {
-      max-width: 600px; margin: 0 auto 2rem;
-      font-style: italic; color: #333;
-      position: relative; padding-left: 1.5rem;
-    }
-    .testimonial::before {
-      content: "“"; font-size: 3rem; color: var(--accent);
-      position: absolute; left: 0; top: -0.5rem;
+
+    .hero img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
     }
 
-    /* FOOTER */
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    .hero h1 strong {
+      font-weight: 700;
+    }
+
+    .hero .cta {
+      margin-top: 1rem;
+    }
+
+    .hero .cta button {
+      background: var(--black);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .brands {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .services h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact .buttons button {
+      background: var(--black);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      margin: 0.5rem;
+      cursor: pointer;
+    }
+
     footer {
-      background: var(--light); color: #777;
-      text-align: center; padding: 2rem 1rem;
-      font-size: 0.875rem; border-top: 1px solid #e0e0e0;
-    }
-
-    /* MOBILE STYLES */
-    @media (max-width: 768px) {
-      .hero {
-        flex-direction: column;
-        padding: 2rem 1rem;
-      }
-      .hero-image-banner {
-        flex: none;
-        max-width: 100%;
-        margin-top: 1.5rem;
-      }
-
-      .nav-center,
-      .nav-right {
-        display: none;
-      }
-      .hamburger {
-        display: block;
-      }
-      .mobile-menu {
-        display: flex;
-        flex-direction: column;
-        background: #fff;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        padding: 1rem;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        transform: translateY(-110%);
-        transition: transform 0.3s ease-in-out;
-        pointer-events: none;
-        z-index: 90;
-      }
-      .mobile-menu.show {
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-      .mobile-menu a {
-        margin-bottom: 1rem;
-        font-size: 1rem;
-        color: var(--dark);
-      }
-      .mobile-menu .cta-button {
-        margin-top: 0.5rem;
-        text-align: center;
-      }
-
-      /* Mobile override: logos side by side */
-      .trust-logos {
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        gap: 0.5rem;
-      }
-      .trust-logos img {
-        width: 30%;
-        height: auto;
-      }
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--gray);
     }
   </style>
 </head>
 <body>
-
-  <!-- NAVBAR -->
-  <header>
-    <div class="nav-bar">
-      <div class="nav-left">Evergreen Work Solutions</div>
-      <ul class="nav-center">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="nav-right">
-        <a href="#contact" class="cta-button">Schedule a Meeting</a>
+  <div class="container">
+    <header>
+      <div class="email">kasrawy.design@gmail.com</div>
+      <div class="btns">
+        <button>Copy</button>
+        <button>CV</button>
       </div>
-      <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
-    </div>
-  </header>
+      <nav>
+        <a href="#">LinkedIn</a>
+        <a href="#">Dribbble</a>
+        <a href="#">Instagram</a>
+      </nav>
+    </header>
 
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#services" onclick="toggleMobileMenu()">Services</a>
-    <a href="#about" onclick="toggleMobileMenu()">About</a>
-    <a href="#testimonials" onclick="toggleMobileMenu()">Testimonials</a>
-    <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
-    <a href="#contact" class="cta-button" onclick="toggleMobileMenu()">Schedule a Meeting</a>
+    <section class="hero">
+      <img src="profile.jpg" alt="User" />
+      <h1>Building digital <strong>products</strong>, <strong>brands</strong>, and <strong>experience</strong>.</h1>
+      <div class="cta">
+        <button>Latest Shots</button>
+      </div>
+    </section>
+
+    <div class="brands">
+      <img src="logo1.png" alt="Brand 1">
+      <img src="logo2.png" alt="Brand 2">
+      <img src="logo3.png" alt="Brand 3">
+      <img src="logo4.png" alt="Brand 4">
+      <img src="logo5.png" alt="Brand 5">
+      <img src="logo6.png" alt="Brand 6">
+    </div>
+
+    <section>
+      <div class="section-title">Collaborate with brands and agencies to create impactful results.</div>
+      <div class="services">
+        <div>
+          <h4>UX & UI</h4>
+          <p>Designing interfaces that are intuitive, efficient, and enjoyable to use.</p>
+        </div>
+        <div>
+          <h4>Web & Mobile App</h4>
+          <p>Transforming ideas into exceptional web and mobile experiences.</p>
+        </div>
+        <div>
+          <h4>Design & Creative</h4>
+          <p>Crafting stunning visuals that connect with your audience.</p>
+        </div>
+        <div>
+          <h4>Development</h4>
+          <p>Bringing your vision to life with modern technology.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Tell me about your next project</h2>
+      <div class="buttons">
+        <button>Email Me</button>
+        <button>WhatsApp</button>
+      </div>
+    </section>
+
+    <footer>
+      © 2024 All rights reserved.
+    </footer>
   </div>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content" data-aos="fade-up">
-      <p class="tagline">#1 Trusted Scribe Partner for Modern Clinics</p>
-      <h1><span>Save Time.</span> Document Smarter.</h1>
-      <p>Trusted virtual medical scribing for faster, better clinical documentation.</p>
-      <a href="#contact" class="cta-button">Start Your Free Trial</a>
-      <div class="trust-logos">
-        <img src="logo1.png" alt="NovaCare Systems"/>
-        <img src="logo2.png" alt="Clarity Health"/>
-        <img src="logo3.png" alt="Pillar Diagnostics"/>
-      </div>
-    </div>
-    <div class="hero-image-banner" data-aos="fade-up" data-aos-delay="150">
-      <img src="Professional woman.png" alt="Professional Medical Scribe"/>
-    </div>
-  </section>
-
-  <!-- MID-BANNER -->
-  <section class="mid-banner">
-    <h2>When you're ready to leave paperwork behind,<br/><em>Evergreen</em> is your clean slate.</h2>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="service">
-      <h3>✔ Reduce burnout</h3>
-      <p>Spend less time charting after hours and more time focused on patient care.</p>
-    </div>
-    <div class="service">
-      <h3>✔ Improve notes</h3>
-      <p>Ensure detailed, consistent documentation that supports better outcomes.</p>
-    </div>
-    <div class="service">
-      <h3>✔ Save time</h3>
-      <p>Streamline visits and speed up your workflow with our scribing support.</p>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <h2>About Us</h2>
-    <p>Evergreen Work Solutions is a leading provider of remote medical scribing, helping healthcare professionals reclaim their time, improve documentation accuracy, and enhance the patient experience through expert real-time support.</p>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials" id="testimonials">
-    <div class="testimonial" data-aos="fade-up">
-      Since partnering with Evergreen, our documentation is cleaner, and our burnout rates have dropped. Highly recommend!
-    </div>
-    <div class="testimonial" data-aos="fade-up" data-aos-delay="100">
-      Their team feels like an extension of our practice. Responsive, professional, and incredibly helpful.
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer id="contact">
-    © 2025 Evergreen Work Solutions — All rights reserved.
-  </footer>
-
-  <!-- SCRIPTS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 700, once: true });
-    function toggleMobileMenu() {
-      document.getElementById('mobileMenu').classList.toggle('show');
-    }
-  </script>
 </body>
 </html>
