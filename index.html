@@ -10,9 +10,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
 
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
-
   <style>
     :root {
       --dark: #0a2540;
@@ -27,6 +24,7 @@
       padding: 0;
       scroll-behavior: smooth;
     }
+
     body {
       font-family: 'Inter', sans-serif;
       background: var(--light);
@@ -34,45 +32,75 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
+
     a { text-decoration: none; color: inherit; }
     button { font-family: inherit; cursor: pointer; }
 
     header {
       background: #fff;
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      position: sticky; top: 0; z-index: 100;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
+
     .nav-bar {
       max-width: 1200px;
       margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 20px;
     }
+
     .nav-left { font-size: 1.125rem; font-weight: 600; }
+
     .nav-center {
-      display: flex; gap: 2.5rem; list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
     }
+
     .nav-center a {
-      font-size: 0.875rem; font-weight: 300;
-      position: relative; transition: color 0.3s;
+      font-size: 0.875rem;
+      font-weight: 300;
+      position: relative;
+      transition: color 0.3s;
     }
+
     .nav-center a::after {
       content: "";
-      position: absolute; bottom: -5px; left: 0;
-      width: 100%; height: 1px; background: var(--accent);
-      transform: scaleX(0); transform-origin: left;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
       transition: transform 0.3s;
     }
-    .nav-center a:hover { color: var(--accent); }
-    .nav-center a:hover::after { transform: scaleX(1); }
+
+    .nav-center a:hover {
+      color: var(--accent);
+    }
+
+    .nav-center a:hover::after {
+      transform: scaleX(1);
+    }
 
     .nav-right .cta-button {
-      background: var(--accent); color: #fff;
-      padding: 0.5rem 1rem; border-radius: 6px;
-      font-weight: 500; transition: background 0.3s, transform 0.2s;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.2s;
     }
+
     .nav-right .cta-button:hover {
-      background: #2f6e56; transform: translateY(-1px);
+      background: #2f6e56;
+      transform: translateY(-1px);
     }
 
     .hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
@@ -85,6 +113,7 @@
       text-align: center;
       overflow: hidden;
     }
+
     .hero::before {
       content: "";
       position: absolute;
@@ -97,12 +126,14 @@
       opacity: 0.07;
       z-index: 0;
     }
+
     .hero-content {
       position: relative;
       z-index: 1;
       max-width: 900px;
       margin: 0 auto;
     }
+
     .tagline {
       font-size: 0.875rem;
       text-transform: uppercase;
@@ -111,12 +142,14 @@
       margin-bottom: 0.5rem;
       font-weight: 500;
     }
+
     .hero h1 {
       font-size: 3rem;
       font-weight: 700;
       margin-bottom: 1rem;
       color: var(--dark);
     }
+
     .hero h1 span {
       display: block;
     }
@@ -128,11 +161,13 @@
       border-right: 2px solid var(--accent);
       white-space: nowrap;
       animation: typing 2.5s steps(20, end), blink 0.8s step-end infinite;
+      width: 0;
+      max-width: 20ch;
     }
 
     @keyframes typing {
       from { width: 0 }
-      to { width: 100% }
+      to { width: 16ch }
     }
 
     @keyframes blink {
@@ -144,11 +179,16 @@
       color: #444;
       margin-bottom: 1.5rem;
     }
+
     .hero .cta-button {
-      background: var(--accent); color: #fff;
-      padding: 0.75rem 1.5rem; border-radius: 6px;
-      font-weight: 500; transition: transform 0.2s;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: transform 0.2s;
     }
+
     .hero .cta-button:hover {
       transform: translateY(-2px);
     }
@@ -156,6 +196,7 @@
     .hero-image-banner {
       margin-top: 2rem;
     }
+
     .hero-image-banner img {
       width: 100%;
       max-width: 400px;
@@ -172,6 +213,7 @@
       gap: 2rem;
       margin-top: 2rem;
     }
+
     .trust-logos img {
       height: 36px;
       width: auto;
@@ -180,71 +222,22 @@
 
     .mid-banner {
       background: linear-gradient(to bottom, var(--cloud), var(--light));
-      padding: 3rem 1rem; text-align: center;
-    }
-    .mid-banner h2 { font-size: 1.625rem; font-weight: 400; }
-
-    .services {
       padding: 3rem 1rem;
-      display: flex; flex-wrap: wrap;
-      justify-content: center; gap: 2rem;
-      background: #fff;
-    }
-    .service {
-      flex: 1 1 250px; max-width: 300px;
-      padding: 1.5rem; text-align: center;
-    }
-    .service h3 {
-      font-size: 1.25rem; color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-    .service p { color: #555; }
-
-    .about {
-      max-width: 900px; margin: 0 auto;
-      padding: 3rem 1rem; text-align: center;
-      background: #fff;
-    }
-    .about h2 {
-      font-size: 2rem; margin-bottom: 1rem;
-      color: var(--dark);
-    }
-    .about p {
-      font-size: 1rem; color: #444;
-      line-height: 1.6;
-    }
-
-    .testimonials {
-      background: var(--cloud); padding: 3rem 1rem;
       text-align: center;
     }
-    .testimonial {
-      max-width: 600px; margin: 0 auto 2rem;
-      font-style: italic; color: #333;
-      position: relative; padding-left: 1.5rem;
-    }
-    .testimonial::before {
-      content: "“"; font-size: 3rem; color: var(--accent);
-      position: absolute; left: 0; top: -0.5rem;
-    }
 
-    footer {
-      background: var(--light); color: #777;
-      text-align: center; padding: 2rem 1rem;
-      font-size: 0.875rem; border-top: 1px solid #e0e0e0;
+    .mid-banner h2 {
+      font-size: 1.625rem;
+      font-weight: 400;
     }
 
     @media (max-width: 768px) {
-      .hero::before {
-        display: none;
-      }
-      .nav-center,
-      .nav-right {
-        display: none;
-      }
-      .hamburger {
-        display: block;
-      }
+      .hero::before { display: none; }
+
+      .nav-center, .nav-right { display: none; }
+
+      .hamburger { display: block; }
+
       .mobile-menu {
         display: flex;
         flex-direction: column;
@@ -260,15 +253,18 @@
         pointer-events: none;
         z-index: 90;
       }
+
       .mobile-menu.show {
         transform: translateY(0);
         pointer-events: auto;
       }
+
       .mobile-menu a {
         margin-bottom: 1rem;
         font-size: 1rem;
         color: var(--dark);
       }
+
       .mobile-menu .cta-button {
         margin-top: 0.5rem;
         text-align: center;
@@ -306,7 +302,7 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-content" data-aos="fade-up">
+    <div class="hero-content">
       <p class="tagline">#1 Trusted Scribe Partner for Modern Clinics</p>
       <h1>
         <span style="color: #3c8264;">Save Time.</span>
@@ -320,7 +316,7 @@
         <img src="logo3.png" alt="Pillar Diagnostics"/>
       </div>
     </div>
-    <div class="hero-image-banner" data-aos="fade-up" data-aos-delay="150">
+    <div class="hero-image-banner">
       <img src="Professional woman.png" alt="Professional Medical Scribe"/>
     </div>
   </section>
@@ -330,47 +326,13 @@
     <h2>When you're ready to leave paperwork behind,<br/><em>Evergreen</em> is your clean slate.</h2>
   </section>
 
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="service">
-      <h3>✔ Reduce burnout</h3>
-      <p>Spend less time charting after hours and more time focused on patient care.</p>
-    </div>
-    <div class="service">
-      <h3>✔ Improve notes</h3>
-      <p>Ensure detailed, consistent documentation that supports better outcomes.</p>
-    </div>
-    <div class="service">
-      <h3>✔ Save time</h3>
-      <p>Streamline visits and speed up your workflow with our scribing support.</p>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <h2>About Us</h2>
-    <p>Evergreen Work Solutions is a leading provider of remote medical scribing, helping healthcare professionals reclaim their time, improve documentation accuracy, and enhance the patient experience through expert real-time support.</p>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="testimonials" id="testimonials">
-    <div class="testimonial" data-aos="fade-up">
-      Since partnering with Evergreen, our documentation is cleaner, and our burnout rates have dropped. Highly recommend!
-    </div>
-    <div class="testimonial" data-aos="fade-up" data-aos-delay="100">
-      Their team feels like an extension of our practice. Responsive, professional, and incredibly helpful.
-    </div>
-  </section>
-
   <!-- FOOTER -->
   <footer id="contact">
     © 2025 Evergreen Work Solutions — All rights reserved.
   </footer>
 
-  <!-- SCRIPTS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- SCRIPT -->
   <script>
-    AOS.init({ duration: 700, once: true });
     function toggleMobileMenu() {
       document.getElementById('mobileMenu').classList.toggle('show');
     }
