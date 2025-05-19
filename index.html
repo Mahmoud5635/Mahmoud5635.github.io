@@ -25,6 +25,26 @@
       background: var(--light);
       color: var(--dark);
       line-height: 1.6;
+      /* constrain the little trust logos */
+.trust-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+  align-items: center;       /* vertically center if they vary */
+  justify-content: flex-start;
+}
+.trust-logos img {
+  height: 36px;              /* same as before */
+  width: auto;               /* force aspect ratio */
+  max-width: 100px;          /* optional cap if some files are huge */
+}
+
+/* lock hero-image to 40% of the row */
+.hero-image {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
     }
     a { text-decoration: none; color: inherit; }
 
