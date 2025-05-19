@@ -84,7 +84,7 @@
     .hamburger { display: none; font-size: 1.5rem; cursor: pointer; }
     .mobile-menu { display: none; }
 
-    /* HERO default */
+    /* HERO */
     .hero {
       background: linear-gradient(to bottom, #fff, #f5fbf9);
       padding: 4rem 1rem 2rem; text-align: left;
@@ -110,17 +110,18 @@
     }
     .hero .cta-button:hover { transform: translateY(-2px); }
 
-    /* Trust logos default: wrap into multiple lines */
-  .trust-logos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;  /* ← left‐align them */
-  gap: 2rem;
-  margin-top: 2rem;
-}
+    /* Trust logos default: left-aligned under button */
+    .trust-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 2rem;
+      margin-top: 2rem;
     }
     .trust-logos img {
-      height: 36px; width: auto; max-width: 100%;
+      height: 36px;
+      width: auto;
+      max-width: 100%;
     }
 
     .hero-image-banner {
@@ -231,13 +232,13 @@
         text-align: center;
       }
 
-      /* Override partner logos to sit in one row on mobile */
+      /* Mobile override: three logos on one row */
       .trust-logos {
         flex-wrap: nowrap;
         justify-content: space-between;
       }
       .trust-logos img {
-        width: 30%;    /* each logo ~30% */
+        width: 30%;
         height: auto;
       }
     }
