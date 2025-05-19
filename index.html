@@ -205,10 +205,10 @@
       margin-bottom: 20px;
       color: var(--dark);
     }
-    /* only Save Time gets accent */
     .hero-text h1 .headline-accent {
       color: var(--accent);
     }
+
     /* typewriter text + blinking cursor */
     #typewriter {
       display: inline-block;
@@ -223,6 +223,7 @@
     #cursor {
       display: inline-block;
       width: 2px;
+      height: 1em;                  /* limit cursor height to one line */
       background: var(--accent);
       animation: blink 0.7s steps(1) infinite;
       vertical-align: bottom;
@@ -232,6 +233,7 @@
       0%, 50% { opacity: 1; }
       51%, 100% { opacity: 0; }
     }
+
     .hero-text p {
       font-size: 18px;
       color: #444;
@@ -387,6 +389,7 @@
       </div>
       <div class="hamburger" onclick="toggleMobileMenu()">☰</div>
     </div>
+
     <div class="mobile-menu" id="mobileMenu">
       <a href="#services" onclick="toggleMobileMenu()">Services</a>
       <a href="#about" onclick="toggleMobileMenu()">About</a>
@@ -458,13 +461,14 @@
     function toggleMobileMenu() {
       document.getElementById('mobileMenu').classList.toggle('show');
     }
+
     document.addEventListener('DOMContentLoaded', () => {
       const isMobile = window.matchMedia("(max-width:768px)").matches;
       const target = document.getElementById('typewriter');
       const cursor = document.getElementById('cursor');
 
       if (!isMobile) {
-        // desktop: type full line
+        // desktop: single line
         const text = "Document Smarter.";
         let i = 0, speed = 100;
         (function type() {
@@ -476,7 +480,7 @@
           }
         })();
       } else {
-        // mobile: split into two lines
+        // mobile: two lines
         const parts = ["Document", "Smarter."];
         let part = 0, charIndex = 0, speed = 100;
         (function typePart() {
@@ -484,13 +488,17 @@
             target.innerHTML += parts[part].charAt(charIndex++);
             setTimeout(typePart, speed);
           } else {
+            // finished current part
+            cursor.style.display = 'none';
             if (part === 0) {
+              // after first word, line break, then re-show cursor & type next
               target.innerHTML += "<br>";
               part++;
               charIndex = 0;
-              setTimeout(typePart, speed);
-            } else {
-              cursor.style.display = 'none';
+              setTimeout(() => {
+                cursor.style.display = 'inline-block';
+                typePart();
+              }, speed);
             }
           }
         })();
