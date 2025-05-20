@@ -340,6 +340,22 @@
       transform: translateY(-5px);
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
     }
+    /* Testimonials Carousel */
+.testimonials {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.testimonials .testimonial-card {
+  scroll-snap-align: start;
+  flex: 0 0 80%;
+  max-width: 400px;
+}
+
 
     /* ABOUT */
     .about-section {
@@ -704,46 +720,96 @@
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="testimonials-section" id="testimonials">
-    <div class="testimonials-heading">
-      <h2>What Our Clients Say</h2>
+<section class="testimonials-section" id="testimonials">
+  <div class="testimonials-heading">
+    <h2>What Our Clients Say</h2>
+  </div>
+  <div class="testimonials">
+    <!-- Card 1 -->
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        “Evergreen has transformed our practice. I save at least 2 hours every day on documentation, which means more time with my family and less burnout.”
+      </div>
+      <div class="testimonial-author">
+        <div class="author-avatar">SJ</div>
+        <div class="author-info">
+          <h4>Dr. Sarah Johnson</h4>
+          <p>Family Medicine Physician</p>
+        </div>
+      </div>
     </div>
-    <div class="testimonials">
-      <div class="testimonial-card">
-        <div class="testimonial-content">
-          “Evergreen has transformed our practice. I save at least 2 hours every day on documentation, which means more time with my family and less burnout.”
-        </div>
-        <div class="testimonial-author">
-          <div class="author-avatar">SJ</div>
-          <div class="author-info">
-            <h4>Dr. Sarah Johnson</h4>
-            <p>Family Medicine Physician</p>
-          </div>
+
+    <!-- Card 2 -->
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        “The scribes at Evergreen are phenomenal. They capture every detail accurately, and our documentation quality scores have improved significantly.”
+      </div>
+      <div class="testimonial-author">
+        <div class="author-avatar">MC</div>
+        <div class="author-info">
+          <h4>Dr. Michael Chen</h4>
+          <p>Emergency Medicine Director</p>
         </div>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-content">
-          “The scribes at Evergreen are phenomenal. They capture every detail accurately, and our documentation quality scores have improved significantly.”
-        </div>
-        <div class="testimonial-author">
-          <div class="author-avatar">MC</div>
-          <div class="author-info">
-            <h4>Dr. Michael Chen</h4>
-            <p>Emergency Medicine Director</p>
-          </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        “Implementation was seamless and the ROI has been incredible. We're seeing more patients with less administrative burden on our providers.”
+      </div>
+      <div class="testimonial-author">
+        <div class="author-avatar">LR</div>
+        <div class="author-info">
+          <h4>Lisa Rodriguez</h4>
+          <p>Practice Manager</p>
         </div>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-content">
-          “Implementation was seamless and the ROI has been incredible. We're seeing more patients with less administrative burden on our providers.”
+    </div>
+
+    <!-- Card 4 -->
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        “Evergreen’s level of customization fits our exact workflow—we couldn’t be happier.”
+      </div>
+      <div class="testimonial-author">
+        <div class="author-avatar">EK</div>
+        <div class="author-info">
+          <h4>Emily Kim</h4>
+          <p>Cardiology Nurse</p>
         </div>
-        <div class="testimonial-author">
-          <div class="author-avatar">LR</div>
-          <div class="author-info">
-            <h4>Lisa Rodriguez</h4>
-            <p>Practice Manager</p>
-          </div>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        “Switching to Evergreen was seamless. Our compliance reviews have never looked better.”
+      </div>
+      <div class="testimonial-author">
+        <div class="author-avatar">MD</div>
+        <div class="author-info">
+          <h4>Mark Davis</h4>
+          <p>Clinic Administrator</p>
         </div>
+      </div>
+    </div>
+
+    <!-- (Optional) Card 6 -->
+    <div class="testimonial-card">
+      <div class="testimonial-content">
+        “Their support team is top-notch—they respond in minutes and truly understand our needs.”
+      </div>
+      <div class="testimonial-author">
+        <div class="author-avatar">SP</div>
+        <div class="author-info">
+          <h4>Samantha Patel</h4>
+          <p>Healthcare IT Manager</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       </div>
     </div>
   </section>
