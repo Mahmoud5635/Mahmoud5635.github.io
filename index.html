@@ -959,6 +959,65 @@
   }
 }
 
+/* Newsletter Slide-in Prompt */
+.newsletter-slidein {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  background: rgba(10,37,64,0.97);
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(60,130,100,0.18);
+  padding: 32px 28px 24px 28px;
+  z-index: 9999;
+  max-width: 340px;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  animation: slideInNewsletter 0.7s cubic-bezier(.4,0,.2,1);
+}
+@keyframes slideInNewsletter {
+  from { opacity: 0; transform: translateY(60px) scale(0.95); }
+  to { opacity: 1; transform: none; }
+}
+.newsletter-slidein.show {
+  display: flex;
+}
+.newsletter-slidein input[type="email"] {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  width: 100%;
+}
+.newsletter-slidein button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.newsletter-slidein .close-slidein {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.newsletter-slidein .close-slidein:hover {
+  opacity: 1;
+}
+
   </style>
 </head>
 
@@ -1239,6 +1298,15 @@
     <div class="copyright">&copy; 2025 Evergreen Work Solutions. All rights reserved.</div>
   </footer>
 
+  <!-- Newsletter Slide-in Prompt -->
+  <div class="newsletter-slidein" id="newsletterSlidein" aria-label="Newsletter signup">
+    <button class="close-slidein" aria-label="Close newsletter">&times;</button>
+    <h3 style="font-size:1.3rem;margin-bottom:8px;">Join our newsletter</h3>
+    <p style="font-size:1rem;opacity:0.85;">Get the latest updates and tips for smarter documentation.</p>
+    <input type="email" id="slidein-email" placeholder="Your email address" aria-label="Email address"/>
+    <button id="slidein-subscribe">Subscribe</button>
+  </div>
+
   <script>
     function toggleMobileMenu() {
       const menu = document.getElementById('mobileMenu');
@@ -1396,6 +1464,26 @@
           glassAnswer.style.display = 'none';
         }, 180);
       });
+    });
+
+    // Newsletter slide-in prompt
+    let slideinTimeout;
+    function showNewsletterSlidein() {
+      const slidein = document.getElementById('newsletterSlidein');
+      if (!slidein.classList.contains('show')) {
+        slidein.classList.add('show');
+      }
+    }
+    function hideNewsletterSlidein() {
+      document.getElementById('newsletterSlidein').classList.remove('show');
+    }
+    document.querySelector('.close-slidein').addEventListener('click', hideNewsletterSlidein);
+    document.getElementById('slidein-subscribe').addEventListener('click', function() {
+      alert('Thank you for subscribing!');
+      hideNewsletterSlidein();
+    });
+    window.addEventListener('DOMContentLoaded', function() {
+      slideinTimeout = setTimeout(showNewsletterSlidein, 4000);
     });
   </script>
 </body>
