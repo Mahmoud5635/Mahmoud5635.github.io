@@ -13,6 +13,9 @@
   <!-- Feather Icons -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
 
+  <!-- Add Playfair Display for premium headings -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet"/>
+
   <style>
     :root {
       --dark: #0a2540;
@@ -974,6 +977,197 @@
   }
 }
 
+/* Premium Heading Font */
+h1, h2, h3, .footer-logo {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.5px;
+}
+body, p, a, li, label, input, textarea, button {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Section fade-in animation */
+.section-fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+}
+.section-fade.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Button gradient/ripple */
+.cta-button, .submit-btn, .newsletter-input-group button, .newsletter-form button {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.cta-button::after, .submit-btn::after, .newsletter-input-group button::after, .newsletter-form button::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 0; height: 0;
+  background: rgba(255,255,255,0.3);
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s, opacity 0.4s;
+  opacity: 0;
+  pointer-events: none;
+}
+.cta-button:active::after, .submit-btn:active::after, .newsletter-input-group button:active::after, .newsletter-form button:active::after {
+  width: 120px; height: 120px; opacity: 1;
+}
+.cta-button:hover, .submit-btn:hover, .newsletter-input-group button:hover, .newsletter-form button:hover {
+  background: linear-gradient(90deg, var(--accent-light) 0%, var(--accent) 100%);
+}
+
+/* Animate feather icons on hover */
+[data-feather] {
+  transition: transform 0.3s, color 0.3s;
+}
+[data-feather]:hover {
+  transform: scale(1.15) rotate(-8deg);
+  color: var(--accent);
+}
+
+/* Glassmorphism for cards */
+.service, .testimonial-card, .faq-item, .contact-form, .newsletter-form, .footer-info, .footer-links {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px) saturate(1.2);
+  -webkit-backdrop-filter: blur(8px) saturate(1.2);
+  box-shadow: 0 8px 32px rgba(60,130,100,0.10);
+  border: 1.5px solid rgba(60,130,100,0.07);
+}
+
+/* Sticky shrinking header */
+header {
+  position: sticky; top: 0; width: 100%;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  z-index: 100;
+  transition: padding 0.3s, box-shadow 0.3s;
+}
+header.shrunk {
+  padding: 0 0 0 0;
+  box-shadow: 0 8px 32px rgba(60,130,100,0.10);
+}
+
+/* Hamburger animation */
+.hamburger {
+  transition: transform 0.3s;
+}
+.hamburger.active {
+  transform: rotate(90deg) scale(1.2);
+}
+
+/* Grayscale client logos row */
+.trust-logos img {
+  filter: grayscale(1) brightness(0.9);
+  transition: filter 0.3s, transform 0.3s;
+}
+.trust-logos img:hover {
+  filter: grayscale(0) brightness(1.1);
+  transform: scale(1.08) translateY(-3px);
+}
+
+/* Testimonial avatars with border/glow */
+.author-avatar {
+  border: 2.5px solid var(--accent);
+  box-shadow: 0 2px 12px rgba(60,130,100,0.10);
+  background: linear-gradient(135deg, var(--cloud), #fff 60%);
+}
+
+/* Newsletter slide-in prompt */
+.newsletter-slidein {
+  position: fixed;
+  bottom: 32px; right: 32px;
+  background: rgba(10,37,64,0.97);
+  color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(60,130,100,0.18);
+  padding: 32px 28px 24px 28px;
+  z-index: 9999;
+  max-width: 340px;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  animation: slideInNewsletter 0.7s cubic-bezier(.4,0,.2,1);
+}
+@keyframes slideInNewsletter {
+  from { opacity: 0; transform: translateY(60px) scale(0.95); }
+  to { opacity: 1; transform: none; }
+}
+.newsletter-slidein.show {
+  display: flex;
+}
+.newsletter-slidein input[type="email"] {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  width: 100%;
+}
+.newsletter-slidein button {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.newsletter-slidein .close-slidein {
+  position: absolute;
+  top: 12px; right: 16px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.newsletter-slidein .close-slidein:hover {
+  opacity: 1;
+}
+
+/* Trusted by bar */
+.trusted-bar {
+  background: linear-gradient(90deg, var(--cloud) 0%, #fff 100%);
+  color: var(--dark);
+  text-align: center;
+  padding: 18px 0 10px 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  border-top: 1.5px solid #eaf6f3;
+  border-bottom: 1.5px solid #eaf6f3;
+}
+
+/* Parallax backgrounds */
+.parallax-bg {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+@media (max-width: 900px) {
+  .parallax-bg {
+    background-attachment: scroll;
+  }
+}
+
+/* Focus states and accessibility */
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 2.5px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(60,130,100,0.13);
+}
+
   </style>
 </head>
 
@@ -1007,10 +1201,25 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
+  <!-- HERO with animated SVG/parallax background -->
+  <section class="hero parallax-bg" style="background-image: url('hero-bg.svg');">
+    <div class="animated-svg-bg" aria-hidden="true">
+      <!-- Example SVG animation -->
+      <svg width="100%" height="180" viewBox="0 0 1440 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,80 Q360,180 720,80 T1440,80 V180 H0 Z" fill="url(#grad1)">
+          <animate attributeName="d" dur="8s" repeatCount="indefinite"
+            values="M0,80 Q360,180 720,80 T1440,80 V180 H0 Z; M0,100 Q360,60 720,120 T1440,100 V180 H0 Z; M0,80 Q360,180 720,80 T1440,80 V180 H0 Z" />
+        </path>
+        <defs>
+          <linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#eaf6f3"/>
+            <stop offset="100%" stop-color="#3c8264"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
     <div class="dot-pattern"></div>
-    <div class="hero-content">
+    <div class="hero-content section-fade">
       <div class="hero-text">
         <h1><span>Save Time.</span><br>Document Smarter.</h1>
         <p>Trusted virtual medical scribing for faster, better clinical documentation.</p>
@@ -1258,6 +1467,20 @@
     <div class="copyright">&copy; 2025 Evergreen Work Solutions. All rights reserved.</div>
   </footer>
 
+  <!-- Newsletter Slide-in Prompt -->
+  <div class="newsletter-slidein" id="newsletterSlidein" aria-label="Newsletter signup">
+    <button class="close-slidein" aria-label="Close newsletter">&times;</button>
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:8px;">Join our newsletter</h3>
+    <p style="font-size:1rem;opacity:0.85;">Get the latest updates and tips for smarter documentation.</p>
+    <input type="email" id="slidein-email" placeholder="Your email address" aria-label="Email address"/>
+    <button id="slidein-subscribe">Subscribe</button>
+  </div>
+
+  <!-- Floating Action Button -->
+  <button class="cta-button" id="fabContact" aria-label="Contact us" style="position:fixed;bottom:24px;left:24px;z-index:9999;box-shadow:0 4px 16px rgba(60,130,100,0.18);border-radius:50%;width:60px;height:60px;display:flex;align-items:center;justify-content:center;font-size:1.7rem;padding:0;">
+    <i data-feather="message-circle"></i>
+  </button>
+
   <script>
     function toggleMobileMenu() {
       const menu = document.getElementById('mobileMenu');
@@ -1415,6 +1638,76 @@
         }, 180);
       });
     });
+
+    // Section fade-in on scroll
+    function revealSections() {
+      document.querySelectorAll('.section-fade').forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          section.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', revealSections);
+    window.addEventListener('DOMContentLoaded', revealSections);
+
+    // Sticky shrinking header
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        header.classList.add('shrunk');
+      } else {
+        header.classList.remove('shrunk');
+      }
+    });
+
+    // Hamburger animation
+    const hamburger = document.querySelector('.hamburger');
+    hamburger.addEventListener('click', function() {
+      this.classList.toggle('active');
+      toggleMobileMenu();
+    });
+
+    // Newsletter slide-in prompt
+    let slideinTimeout;
+    function showNewsletterSlidein() {
+      const slidein = document.getElementById('newsletterSlidein');
+      if (!slidein.classList.contains('show')) {
+        slidein.classList.add('show');
+      }
+    }
+    function hideNewsletterSlidein() {
+      document.getElementById('newsletterSlidein').classList.remove('show');
+    }
+    document.querySelector('.close-slidein').addEventListener('click', hideNewsletterSlidein);
+    document.getElementById('slidein-subscribe').addEventListener('click', function() {
+      alert('Thank you for subscribing!');
+      hideNewsletterSlidein();
+    });
+    window.addEventListener('DOMContentLoaded', function() {
+      slideinTimeout = setTimeout(showNewsletterSlidein, 4000);
+    });
+
+    // Floating Action Button
+    const fab = document.getElementById('fabContact');
+    fab.addEventListener('click', function() {
+      window.location.href = '#contact';
+    });
+
+    // Parallax effect for hero/section backgrounds
+    window.addEventListener('scroll', function() {
+      document.querySelectorAll('.parallax-bg').forEach(bg => {
+        const y = window.scrollY * 0.3;
+        bg.style.backgroundPosition = `center calc(50% + ${y}px)`;
+      });
+    });
+
+    // Lazy load images
+    if ('loading' in HTMLImageElement.prototype) {
+      document.querySelectorAll('img').forEach(img => {
+        img.setAttribute('loading', 'lazy');
+      });
+    }
   </script>
 </body>
 </html>
