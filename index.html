@@ -957,6 +957,21 @@
   .faq-glass-answer {
     display: none !important;
   }
+  .faq-answer {
+    display: none;
+    padding: 0 24px 18px 24px;
+    color: var(--text);
+    font-size: 1rem;
+    background: #f8f8f8;
+    border-radius: 0 0 12px 12px;
+    border-left: none;
+    margin-left: 0;
+    box-shadow: none;
+  }
+  .faq-item.active .faq-answer {
+    display: block;
+    animation: fadeInFaq 0.3s;
+  }
 }
 
   </style>
@@ -1153,15 +1168,19 @@
     <div class="faq-list premium-faq-list horizontal-faq-list">
       <div class="faq-item" data-answer="We use industry-standard encryption and strict access controls to ensure your data is always protected and HIPAA-compliant.">
         <button class="faq-question"><i data-feather="shield"></i> How secure is my data?</button>
+        <div class="faq-answer">We use industry-standard encryption and strict access controls to ensure your data is always protected and HIPAA-compliant.</div>
       </div>
       <div class="faq-item" data-answer="We support integration with most major EMRs, including Epic, Cerner, Athenahealth, and more. Contact us for specific compatibility.">
         <button class="faq-question"><i data-feather="layers"></i> What EMRs do you integrate with?</button>
+        <div class="faq-answer">We support integration with most major EMRs, including Epic, Cerner, Athenahealth, and more. Contact us for specific compatibility.</div>
       </div>
       <div class="faq-item" data-answer="Most notes are delivered within 24 hours, with STAT options available for urgent cases.">
         <button class="faq-question"><i data-feather="clock"></i> How quickly are notes delivered?</button>
+        <div class="faq-answer">Most notes are delivered within 24 hours, with STAT options available for urgent cases.</div>
       </div>
       <div class="faq-item" data-answer="Absolutely! We offer a free trial so you can experience our service risk-free.">
         <button class="faq-question"><i data-feather="star"></i> Can I try Evergreen before committing?</button>
+        <div class="faq-answer">Absolutely! We offer a free trial so you can experience our service risk-free.</div>
       </div>
     </div>
     <div class="faq-glass-answer" id="faqGlassAnswer"></div>
@@ -1365,7 +1384,6 @@
         glassAnswer.innerHTML = answer;
         glassAnswer.style.display = 'block';
         glassAnswer.style.opacity = '1';
-        // Position the box near the mouse, but keep it in viewport
         let x = e.clientX + 24;
         let y = e.clientY - 24;
         const boxWidth = 340;
