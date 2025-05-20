@@ -767,6 +767,122 @@
   background: var(--accent-light);
 }
 
+/* PREMIUM FAQ SECTION */
+.premium-faq {
+  background: #f8f8f8;
+  padding: 60px 0 40px 0;
+  max-width: 1100px;
+  margin: 0 auto 0 auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(60,130,100,0.07);
+}
+.premium-faq-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 36px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media (max-width: 900px) {
+  .premium-faq-list {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+.faq-item {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(60,130,100,0.06);
+  transition: box-shadow 0.2s, border 0.2s;
+  border: 1.5px solid #eaf6f3;
+  overflow: hidden;
+}
+.faq-item.active {
+  box-shadow: 0 6px 24px rgba(60,130,100,0.10);
+  border-color: var(--accent);
+}
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--dark);
+  padding: 20px 28px 16px 28px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 0;
+  transition: background 0.2s, color 0.2s;
+}
+.faq-question:hover {
+  background: var(--accent);
+  color: #fff;
+}
+.faq-question i {
+  color: var(--accent);
+  width: 22px;
+  height: 22px;
+  stroke-width: 2.2;
+}
+.faq-item.active .faq-question {
+  color: var(--accent);
+}
+.faq-answer {
+  display: none;
+  padding: 0 28px 18px 60px;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.7;
+  border-left: 2.5px solid var(--accent);
+  margin-left: 22px;
+  background: #f8f8f8;
+  border-radius: 0 0 12px 12px;
+}
+.faq-item.active .faq-answer {
+  display: block;
+  animation: fadeInFaq 0.3s;
+}
+@keyframes fadeInFaq {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.faq-heading {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* TESTIMONIALS CAROUSEL LOOPING */
+.testimonials-carousel {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* For seamless looping, set min-width for each card */
+}
+.testimonials-carousel::-webkit-scrollbar {
+  display: none;
+}
+.testimonial-card {
+  min-width: 320px;
+  max-width: 340px;
+}
+@media (max-width: 768px) {
+  .testimonials-carousel {
+    gap: 15px;
+  }
+  .testimonial-card {
+    min-width: 85vw;
+    max-width: 90vw;
+  }
+}
+
   </style>
 </head>
 
@@ -953,31 +1069,6 @@
     </div>
   </section>
 
-  <!-- FAQ SECTION -->
-  <section class="faq-section" id="faq">
-    <div class="faq-heading">
-      <h2>Frequently Asked Questions</h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question">How secure is my data?</button>
-        <div class="faq-answer">We use industry-standard encryption and strict access controls to ensure your data is always protected and HIPAA-compliant.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">What EMRs do you integrate with?</button>
-        <div class="faq-answer">We support integration with most major EMRs, including Epic, Cerner, Athenahealth, and more. Contact us for specific compatibility.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">How quickly are notes delivered?</button>
-        <div class="faq-answer">Most notes are delivered within 24 hours, with STAT options available for urgent cases.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Can I try Evergreen before committing?</button>
-        <div class="faq-answer">Absolutely! We offer a free trial so you can experience our service risk-free.</div>
-      </div>
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section class="contact-section" id="contact">
     <div class="contact-container">
@@ -1014,6 +1105,31 @@
         </div>
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section premium-faq" id="faq">
+    <div class="faq-heading">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list premium-faq-list">
+      <div class="faq-item">
+        <button class="faq-question"><i data-feather="shield"></i> How secure is my data?</button>
+        <div class="faq-answer">We use industry-standard encryption and strict access controls to ensure your data is always protected and HIPAA-compliant.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><i data-feather="layers"></i> What EMRs do you integrate with?</button>
+        <div class="faq-answer">We support integration with most major EMRs, including Epic, Cerner, Athenahealth, and more. Contact us for specific compatibility.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><i data-feather="clock"></i> How quickly are notes delivered?</button>
+        <div class="faq-answer">Most notes are delivered within 24 hours, with STAT options available for urgent cases.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><i data-feather="star"></i> Can I try Evergreen before committing?</button>
+        <div class="faq-answer">Absolutely! We offer a free trial so you can experience our service risk-free.</div>
+      </div>
     </div>
   </section>
 
@@ -1057,16 +1173,30 @@
     }
     feather.replace();
 
-    // TESTIMONIALS CAROUSEL DRAG/SCROLL
+    // TESTIMONIALS CAROUSEL DRAG/SCROLL + LOOPING
     const carousel = document.getElementById('testimonialsCarousel');
     let isDown = false;
     let startX;
     let scrollLeft;
+    let autoScrollInterval;
+
+    // Duplicate cards for seamless looping
+    function duplicateCarouselCards() {
+      const cards = Array.from(carousel.children);
+      cards.forEach(card => {
+        const clone = card.cloneNode(true);
+        clone.classList.add('clone');
+        carousel.appendChild(clone);
+      });
+    }
+    duplicateCarouselCards();
+
     carousel.addEventListener('mousedown', (e) => {
       isDown = true;
       carousel.classList.add('active');
       startX = e.pageX - carousel.offsetLeft;
       scrollLeft = carousel.scrollLeft;
+      clearInterval(autoScrollInterval);
     });
     carousel.addEventListener('mouseleave', () => {
       isDown = false;
@@ -1075,59 +1205,56 @@
     carousel.addEventListener('mouseup', () => {
       isDown = false;
       carousel.classList.remove('active');
+      startAutoScroll();
     });
     carousel.addEventListener('mousemove', (e) => {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - carousel.offsetLeft;
-      const walk = (x - startX) * 1.5; //scroll-fast
+      const walk = (x - startX) * 1.5;
       carousel.scrollLeft = scrollLeft - walk;
+      checkLoop();
     });
     // Touch events
     carousel.addEventListener('touchstart', (e) => {
       isDown = true;
       startX = e.touches[0].pageX - carousel.offsetLeft;
       scrollLeft = carousel.scrollLeft;
+      clearInterval(autoScrollInterval);
     });
     carousel.addEventListener('touchend', () => {
       isDown = false;
+      startAutoScroll();
     });
     carousel.addEventListener('touchmove', (e) => {
       if (!isDown) return;
       const x = e.touches[0].pageX - carousel.offsetLeft;
       const walk = (x - startX) * 1.5;
       carousel.scrollLeft = scrollLeft - walk;
+      checkLoop();
     });
-    // Auto-scroll animation
-    let autoScrollInterval = setInterval(() => {
-      if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth - 1) {
-        carousel.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        carousel.scrollBy({ left: 1, behavior: 'smooth' });
+
+    function checkLoop() {
+      const cardWidth = carousel.children[0].offsetWidth + 30; // 30px gap
+      if (carousel.scrollLeft >= cardWidth * (carousel.children.length / 2)) {
+        carousel.scrollLeft -= cardWidth * (carousel.children.length / 2);
+      } else if (carousel.scrollLeft < 0) {
+        carousel.scrollLeft += cardWidth * (carousel.children.length / 2);
       }
-    }, 20);
-    // Pause auto-scroll on user interaction
-    carousel.addEventListener('mousedown', () => clearInterval(autoScrollInterval));
-    carousel.addEventListener('touchstart', () => clearInterval(autoScrollInterval));
-    // Resume auto-scroll after interaction
-    carousel.addEventListener('mouseup', () => {
+    }
+
+    function startAutoScroll() {
+      clearInterval(autoScrollInterval);
       autoScrollInterval = setInterval(() => {
-        if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth - 1) {
-          carousel.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          carousel.scrollBy({ left: 1, behavior: 'smooth' });
+        const cardWidth = carousel.children[0].offsetWidth + 30;
+        carousel.scrollLeft += 1;
+        if (carousel.scrollLeft >= cardWidth * (carousel.children.length / 2)) {
+          carousel.scrollLeft -= cardWidth * (carousel.children.length / 2);
         }
-      }, 20);
-    });
-    carousel.addEventListener('touchend', () => {
-      autoScrollInterval = setInterval(() => {
-        if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth - 1) {
-          carousel.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          carousel.scrollBy({ left: 1, behavior: 'smooth' });
-        }
-      }, 20);
-    });
+      }, 16);
+    }
+    startAutoScroll();
+
     // FAQ ACCORDION
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(btn => {
