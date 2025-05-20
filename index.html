@@ -25,8 +25,7 @@
     }
     *, *::before, *::after {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       scroll-behavior: smooth;
     }
     body {
@@ -118,7 +117,8 @@
     .hero-text p { font-size: 19px; margin: 20px 0; }
     .hero-text .cta-button {
       background: var(--accent); color: #fff; padding: 15px 32px;
-      border-radius: 8px; font-weight: 500; box-shadow: 0 6px 15px rgba(60,130,100,0.25);
+      border-radius: 8px; font-weight: 500;
+      box-shadow: 0 6px 15px rgba(60,130,100,0.25);
     }
     .hero-image img { width: 100%; border-radius: 16px; }
 
@@ -133,11 +133,25 @@
     .services-section {
       padding: var(--section-spacing) 20px; background: #fff;
     }
-    .services { display: flex; flex-wrap: wrap; gap: 30px; }
+    .services-heading {
+      text-align: center; margin-bottom: 60px;
+    }
+    .services-heading h2 { font-size: 34px; color: var(--dark); }
+    .services-heading p { color: var(--text); }
+    .services {
+      max-width: 1200px; margin: auto;
+      display: flex; flex-wrap: wrap; gap: 30px;
+      justify-content: center;
+    }
     .service {
       flex: 1; min-width: 300px; max-width: 350px;
       background: #fff; padding: 40px 30px; border-radius: 16px;
       box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    .service:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
     }
 
     /* ABOUT */
@@ -145,19 +159,25 @@
       background: var(--light); padding: var(--section-spacing) 20px;
       text-align: center;
     }
+    .about-section h2 { font-size: 34px; color: var(--dark); margin-bottom: 20px; }
 
     /* TESTIMONIALS CAROUSEL */
     .testimonials-section {
       background: #fff; padding: var(--section-spacing) 20px;
     }
     .testimonials-heading { text-align: center; margin-bottom: 40px; }
+    .testimonials-heading h2 { font-size: 34px; color: var(--dark); }
+
     .testimonials {
       display: flex; gap: 1rem;
       overflow-x: auto; scroll-snap-type: x mandatory;
       scrollbar-width: none; -ms-overflow-style: none;
       padding-bottom: 1rem;
+      cursor: grab;
     }
+    .testimonials:active { cursor: grabbing; }
     .testimonials::-webkit-scrollbar { display: none; }
+
     .testimonials .testimonial-card {
       scroll-snap-align: start;
       flex: 0 0 80%; max-width: 400px;
@@ -168,9 +188,7 @@
     .testimonial-content {
       font-style: italic; margin-bottom: 20px; color: var(--text);
     }
-    .testimonial-author {
-      display: flex; align-items: center;
-    }
+    .testimonial-author { display: flex; align-items: center; }
     .author-avatar {
       width: 50px; height: 50px; border-radius: 50%;
       background: var(--cloud); display: flex;
@@ -184,12 +202,21 @@
       background: var(--cloud); padding: var(--section-spacing) 20px;
     }
     .contact-container {
-      display: flex; flex-wrap: wrap; gap: 50px;
       max-width: 1000px; margin: auto;
+      display: flex; flex-wrap: wrap; gap: 50px;
     }
     .contact-info, .contact-form {
       flex: 1; min-width: 300px;
     }
+    .contact-info h2 { font-size: 34px; color: var(--dark); margin-bottom: 20px; }
+    .contact-method { display: flex; align-items: center; margin-bottom: 20px; }
+    .contact-icon {
+      width: 42px; height: 42px; background: #fff; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      margin-right: 15px;
+    }
+    .contact-text h4 { margin-bottom: 5px; }
     .contact-form {
       background: #fff; padding: 40px; border-radius: 16px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.06);
@@ -199,21 +226,32 @@
       width: 100%; padding: 15px; border: 1px solid #e0e0e0;
       border-radius: 8px; font-size: 15px;
     }
+    .submit-btn {
+      background: var(--accent); color: #fff; border: none;
+      padding: 15px 30px; border-radius: 8px; font-weight: 500;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .submit-btn:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(60,130,100,0.25);
+    }
 
     /* FOOTER */
     footer {
       background: var(--dark); color: #fff; padding: 60px 20px 30px;
     }
     .footer-container {
+      max-width: 1200px; margin: auto;
       display: flex; flex-wrap: wrap; gap: 50px;
-      max-width: 1200px; margin: auto  ;
+      margin-bottom: 30px;
     }
     .footer-info { flex: 2; }
     .footer-links { flex: 1; }
     .footer-menu li { margin-bottom: 12px; }
     .footer-menu a:hover { padding-left: 5px; }
     .copyright {
-      text-align: center; margin-top: 30px;
+      text-align: center; margin-top: 20px;
       font-size: 14px; opacity: 0.7;
     }
   </style>
@@ -266,10 +304,23 @@
 
   <!-- SERVICES -->
   <section class="services-section" id="services">
+    <div class="services-heading">
+      <h2>Our Services</h2>
+      <p>We help healthcare providers focus on what matters most – patient care.</p>
+    </div>
     <div class="services">
-      <div class="service">…</div>
-      <div class="service">…</div>
-      <div class="service">…</div>
+      <div class="service">
+        <h3>Reduce Burnout</h3>
+        <p>Spend less time charting after hours and more time focused on patient care.</p>
+      </div>
+      <div class="service">
+        <h3>Improve Notes</h3>
+        <p>Ensure detailed, consistent documentation that supports better outcomes.</p>
+      </div>
+      <div class="service">
+        <h3>Save Time</h3>
+        <p>Streamline visits and speed up your workflow with our scribing support.</p>
+      </div>
     </div>
   </section>
 
@@ -286,45 +337,75 @@
     </div>
     <div class="testimonials">
       <div class="testimonial-card">
-        <div class="testimonial-content">“Evergreen has transformed our practice… less burnout.”</div>
+        <div class="testimonial-content">
+          “Evergreen has transformed our practice. I save at least 2 hours every day on documentation, which means more time with my family and less burnout.”
+        </div>
         <div class="testimonial-author">
           <div class="author-avatar">SJ</div>
-          <div class="author-info"><h4>Dr. Sarah Johnson</h4><p>Family Medicine Physician</p></div>
+          <div class="author-info">
+            <h4>Dr. Sarah Johnson</h4>
+            <p>Family Medicine Physician</p>
+          </div>
         </div>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-content">“The scribes at Evergreen are phenomenal… scores have improved significantly.”</div>
+        <div class="testimonial-content">
+          “The scribes at Evergreen are phenomenal. They capture every detail accurately, and our documentation quality scores have improved significantly.”
+        </div>
         <div class="testimonial-author">
           <div class="author-avatar">MC</div>
-          <div class="author-info"><h4>Dr. Michael Chen</h4><p>Emergency Medicine Director</p></div>
+          <div class="author-info">
+            <h4>Dr. Michael Chen</h4>
+            <p>Emergency Medicine Director</p>
+          </div>
         </div>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-content">“Implementation was seamless and the ROI has been incredible…”</div>
+        <div class="testimonial-content">
+          “Implementation was seamless and the ROI has been incredible. We're seeing more patients with less administrative burden on our providers.”
+        </div>
         <div class="testimonial-author">
           <div class="author-avatar">LR</div>
-          <div class="author-info"><h4>Lisa Rodriguez</h4><p>Practice Manager</p></div>
+          <div class="author-info">
+            <h4>Lisa Rodriguez</h4>
+            <p>Practice Manager</p>
+          </div>
         </div>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-content">“Evergreen’s level of customization fits our exact workflow…”</div>
+        <div class="testimonial-content">
+          “Evergreen’s level of customization fits our exact workflow—we couldn’t be happier.”
+        </div>
         <div class="testimonial-author">
           <div class="author-avatar">EK</div>
-          <div class="author-info"><h4>Emily Kim</h4><p>Cardiology Nurse</p></div>
+          <div class="author-info">
+            <h4>Emily Kim</h4>
+            <p>Cardiology Nurse</p>
+          </div>
         </div>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-content">“Switching to Evergreen was seamless. Our compliance reviews have never looked better.”</div>
+        <div class="testimonial-content">
+          “Switching to Evergreen was seamless. Our compliance reviews have never looked better.”
+        </div>
         <div class="testimonial-author">
           <div class="author-avatar">MD</div>
-          <div class="author-info"><h4>Mark Davis</h4><p>Clinic Administrator</p></div>
+          <div class="author-info">
+            <h4>Mark Davis</h4>
+            <p>Clinic Administrator</p>
+          </div>
         </div>
       </div>
       <div class="testimonial-card">
-        <div class="testimonial-content">“Their support team is top-notch—they respond in minutes…”</div>
+        <div class="testimonial-content">
+          “Their support team is top-notch—they respond in minutes and truly understand our needs.”
+        </div>
         <div class="testimonial-author">
           <div class="author-avatar">SP</div>
-          <div class="author-info"><h4>Samantha Patel</h4><p>Healthcare IT Manager</p></div>
+          <div class="author-info">
+            <h4>Samantha Patel</h4>
+            <p>Healthcare IT Manager</p>
+          </div>
         </div>
       </div>
     </div>
@@ -346,9 +427,18 @@
         </div>
       </div>
       <form class="contact-form">
-        <div class="form-group"><label for="name">Name</label><input id="name" class="form-control" placeholder="Your Name"></div>
-        <div class="form-group"><label for="email">Email</label><input id="email" type="email" class="form-control" placeholder="Your Email"></div>
-        <div class="form-group"><label for="message">Message</label><textarea id="message" class="form-control" placeholder="Your Message"></textarea></div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control" placeholder="Your Name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="form-control" placeholder="Your Email" />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" class="form-control" placeholder="Your Message"></textarea>
+        </div>
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
     </div>
@@ -361,9 +451,9 @@
         <div class="footer-logo">Evergreen Work Solutions</div>
         <p class="footer-desc">At Evergreen, we're committed to supporting healthcare providers with secure, accurate, and efficient documentation solutions.</p>
         <div class="social-links">
-          <a class="social-link"><i data-feather="facebook"></i></a>
-          <a class="social-link"><i data-feather="twitter"></i></a>
-          <a class="social-link"><i data-feather="linkedin"></i></a>
+          <a href="#" class="social-link"><i data-feather="facebook"></i></a>
+          <a href="#" class="social-link"><i data-feather="twitter"></i></a>
+          <a href="#" class="social-link"><i data-feather="linkedin"></i></a>
         </div>
       </div>
       <div class="footer-links">
@@ -385,14 +475,35 @@
     }
     feather.replace();
 
-    // Auto-scroll testimonials
+    // —— Auto-scroll testimonials ——  
     const carousel = document.querySelector('.testimonials');
-    let pos = 0;
+    let autoPos = 0;
+    const speed = 2;      // pixels per tick
+    const interval = 20;  // milliseconds per tick
     setInterval(() => {
-      pos += 1;
-      if (pos >= carousel.scrollWidth - carousel.clientWidth) pos = 0;
-      carousel.scrollTo({ left: pos, behavior: 'smooth' });
-    }, 40);
+      autoPos += speed;
+      if (autoPos >= carousel.scrollWidth - carousel.clientWidth) {
+        autoPos = 0;
+      }
+      carousel.scrollTo({ left: autoPos });
+    }, interval);
+
+    // —— Click-and-drag support ——  
+    let isDown = false, startX, scrollLeft;
+    carousel.addEventListener('mousedown', e => {
+      isDown = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+    carousel.addEventListener('mouseleave', () => isDown = false);
+    carousel.addEventListener('mouseup',   () => isDown = false);
+    carousel.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 2; // drag-to-scroll speed
+      carousel.scrollLeft = scrollLeft - walk;
+    });
   </script>
 </body>
 </html>
