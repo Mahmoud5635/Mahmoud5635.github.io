@@ -883,6 +883,41 @@
   }
 }
 
+.horizontal-faq-list {
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 10px;
+}
+.horizontal-faq-list::-webkit-scrollbar {
+  display: none;
+}
+.horizontal-faq-list .faq-item {
+  min-width: 260px;
+  max-width: 320px;
+  flex: 0 0 auto;
+}
+@media (max-width: 900px) {
+  .horizontal-faq-list {
+    gap: 18px;
+  }
+  .horizontal-faq-list .faq-item {
+    min-width: 80vw;
+    max-width: 90vw;
+  }
+}
+.horizontal-faq {
+  background: #f8f8f8;
+  padding: 40px 0 20px 0;
+  max-width: 100vw;
+  margin: 0 auto 0 auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(60,130,100,0.07);
+}
+
   </style>
 </head>
 
@@ -1069,6 +1104,31 @@
     </div>
   </section>
 
+  <!-- FAQ SECTION -->
+  <section class="faq-section premium-faq horizontal-faq" id="faq">
+    <div class="faq-heading">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list premium-faq-list horizontal-faq-list">
+      <div class="faq-item">
+        <button class="faq-question"><i data-feather="shield"></i> How secure is my data?</button>
+        <div class="faq-answer">We use industry-standard encryption and strict access controls to ensure your data is always protected and HIPAA-compliant.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><i data-feather="layers"></i> What EMRs do you integrate with?</button>
+        <div class="faq-answer">We support integration with most major EMRs, including Epic, Cerner, Athenahealth, and more. Contact us for specific compatibility.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><i data-feather="clock"></i> How quickly are notes delivered?</button>
+        <div class="faq-answer">Most notes are delivered within 24 hours, with STAT options available for urgent cases.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question"><i data-feather="star"></i> Can I try Evergreen before committing?</button>
+        <div class="faq-answer">Absolutely! We offer a free trial so you can experience our service risk-free.</div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section class="contact-section" id="contact">
     <div class="contact-container">
@@ -1105,31 +1165,6 @@
         </div>
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
-    </div>
-  </section>
-
-  <!-- FAQ SECTION -->
-  <section class="faq-section premium-faq" id="faq">
-    <div class="faq-heading">
-      <h2>Frequently Asked Questions</h2>
-    </div>
-    <div class="faq-list premium-faq-list">
-      <div class="faq-item">
-        <button class="faq-question"><i data-feather="shield"></i> How secure is my data?</button>
-        <div class="faq-answer">We use industry-standard encryption and strict access controls to ensure your data is always protected and HIPAA-compliant.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question"><i data-feather="layers"></i> What EMRs do you integrate with?</button>
-        <div class="faq-answer">We support integration with most major EMRs, including Epic, Cerner, Athenahealth, and more. Contact us for specific compatibility.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question"><i data-feather="clock"></i> How quickly are notes delivered?</button>
-        <div class="faq-answer">Most notes are delivered within 24 hours, with STAT options available for urgent cases.</div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question"><i data-feather="star"></i> Can I try Evergreen before committing?</button>
-        <div class="faq-answer">Absolutely! We offer a free trial so you can experience our service risk-free.</div>
-      </div>
     </div>
   </section>
 
