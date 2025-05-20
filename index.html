@@ -932,6 +932,33 @@
   box-shadow: 0 4px 32px rgba(60,130,100,0.07);
 }
 
+/* FAQ Glassmorphic Answer (Desktop Only) */
+.faq-glass-answer {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  min-width: 260px;
+  max-width: 350px;
+  padding: 22px 28px;
+  color: var(--dark);
+  font-size: 1rem;
+  line-height: 1.7;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.25);
+  box-shadow: 0 8px 32px rgba(60,130,100,0.13);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(16px) saturate(1.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+  pointer-events: none;
+  transition: opacity 0.18s, transform 0.18s;
+  opacity: 0;
+}
+@media (max-width: 900px) {
+  .faq-glass-answer {
+    display: none !important;
+  }
+}
+
   </style>
 </head>
 
@@ -1124,23 +1151,20 @@
       <h2>Frequently Asked Questions</h2>
     </div>
     <div class="faq-list premium-faq-list horizontal-faq-list">
-      <div class="faq-item">
+      <div class="faq-item" data-answer="We use industry-standard encryption and strict access controls to ensure your data is always protected and HIPAA-compliant.">
         <button class="faq-question"><i data-feather="shield"></i> How secure is my data?</button>
-        <div class="faq-answer">We use industry-standard encryption and strict access controls to ensure your data is always protected and HIPAA-compliant.</div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-answer="We support integration with most major EMRs, including Epic, Cerner, Athenahealth, and more. Contact us for specific compatibility.">
         <button class="faq-question"><i data-feather="layers"></i> What EMRs do you integrate with?</button>
-        <div class="faq-answer">We support integration with most major EMRs, including Epic, Cerner, Athenahealth, and more. Contact us for specific compatibility.</div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-answer="Most notes are delivered within 24 hours, with STAT options available for urgent cases.">
         <button class="faq-question"><i data-feather="clock"></i> How quickly are notes delivered?</button>
-        <div class="faq-answer">Most notes are delivered within 24 hours, with STAT options available for urgent cases.</div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" data-answer="Absolutely! We offer a free trial so you can experience our service risk-free.">
         <button class="faq-question"><i data-feather="star"></i> Can I try Evergreen before committing?</button>
-        <div class="faq-answer">Absolutely! We offer a free trial so you can experience our service risk-free.</div>
       </div>
     </div>
+    <div class="faq-glass-answer" id="faqGlassAnswer"></div>
   </section>
 
   <!-- CONTACT -->
@@ -1321,6 +1345,57 @@
       e.preventDefault();
       alert('Thank you for subscribing!');
       this.reset();
+    });
+
+    // FAQ GLASSMORPHIC HOVER (Desktop Only)
+    const faqItems = document.querySelectorAll('.faq-item');
+    const glassAnswer = document.getElementById('faqGlassAnswer');
+    let glassTimeout;
+
+    function isDesktop() {
+      return window.innerWidth > 900;
+    }
+
+    faqItems.forEach(item => {
+      const btn = item.querySelector('.faq-question');
+      btn.addEventListener('mouseenter', e => {
+        if (!isDesktop()) return;
+        clearTimeout(glassTimeout);
+        const answer = item.getAttribute('data-answer');
+        glassAnswer.innerHTML = answer;
+        glassAnswer.style.display = 'block';
+        glassAnswer.style.opacity = '1';
+        // Position the box near the mouse, but keep it in viewport
+        let x = e.clientX + 24;
+        let y = e.clientY - 24;
+        const boxWidth = 340;
+        const boxHeight = 120;
+        if (x + boxWidth > window.innerWidth) x = window.innerWidth - boxWidth - 16;
+        if (y + boxHeight > window.innerHeight) y = window.innerHeight - boxHeight - 16;
+        if (y < 0) y = 16;
+        glassAnswer.style.left = x + 'px';
+        glassAnswer.style.top = y + 'px';
+        glassAnswer.style.transform = 'scale(1)';
+      });
+      btn.addEventListener('mousemove', e => {
+        if (!isDesktop()) return;
+        let x = e.clientX + 24;
+        let y = e.clientY - 24;
+        const boxWidth = 340;
+        const boxHeight = 120;
+        if (x + boxWidth > window.innerWidth) x = window.innerWidth - boxWidth - 16;
+        if (y + boxHeight > window.innerHeight) y = window.innerHeight - boxHeight - 16;
+        if (y < 0) y = 16;
+        glassAnswer.style.left = x + 'px';
+        glassAnswer.style.top = y + 'px';
+      });
+      btn.addEventListener('mouseleave', () => {
+        if (!isDesktop()) return;
+        glassAnswer.style.opacity = '0';
+        glassTimeout = setTimeout(() => {
+          glassAnswer.style.display = 'none';
+        }, 180);
+      });
     });
   </script>
 </body>
