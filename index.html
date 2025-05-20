@@ -583,7 +583,7 @@
       color: rgba(255,255,255,0.6);
       font-size: 14px;
     }
-    /* 1. Remove the green “status” dot next to the logo */
+    /* 1. Remove the green "status" dot next to the logo */
 .nav-left::before {
   display: none;
 }
@@ -595,9 +595,151 @@
     gap: 1.5rem;               /* tighten spacing */
   }
   .trust-logos img {
-    max-width: 100px;          /* cap each logo’s width */
+    max-width: 100px;          /* cap each logo's width */
     height: auto;
   }
+}
+
+/* TESTIMONIALS CAROUSEL */
+.testimonials-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.testimonials-carousel {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.testimonials-carousel::-webkit-scrollbar {
+  display: none;
+}
+.carousel-arrow {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: background 0.2s;
+  z-index: 2;
+}
+.carousel-arrow:hover {
+  background: var(--accent-light);
+}
+@media (max-width: 768px) {
+  .testimonials-carousel-wrapper {
+    max-width: 100vw;
+    padding: 0 5px;
+  }
+  .testimonials-carousel {
+    gap: 15px;
+  }
+}
+
+/* FAQ SECTION */
+.faq-section {
+  background: #fff;
+  padding: var(--section-spacing) 20px 60px;
+  max-width: 1000px;
+  margin: 0 auto 40px auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+}
+.faq-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.faq-list {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.faq-item {
+  margin-bottom: 18px;
+  border-radius: 8px;
+  background: var(--cloud);
+  box-shadow: 0 2px 8px rgba(60,130,100,0.04);
+}
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark);
+  padding: 18px 24px;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.faq-question:hover {
+  background: var(--accent);
+  color: #fff;
+}
+.faq-answer {
+  display: none;
+  padding: 0 24px 18px 24px;
+  color: var(--text);
+  font-size: 1rem;
+}
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+/* NEWSLETTER FORM */
+.newsletter-form {
+  margin-top: 30px;
+  background: var(--cloud);
+  padding: 18px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(60,130,100,0.04);
+  max-width: 350px;
+}
+.newsletter-form label {
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 8px;
+  display: block;
+}
+.newsletter-input-group {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.newsletter-input-group input[type="email"] {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+}
+.newsletter-input-group button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.newsletter-input-group button:hover {
+  background: var(--accent-light);
 }
 
   </style>
@@ -708,42 +850,107 @@
     <div class="testimonials-heading">
       <h2>What Our Clients Say</h2>
     </div>
-    <div class="testimonials">
-      <div class="testimonial-card">
-        <div class="testimonial-content">
-          “Evergreen has transformed our practice. I save at least 2 hours every day on documentation, which means more time with my family and less burnout.”
+    <div class="testimonials-carousel-wrapper">
+      <button class="carousel-arrow left" aria-label="Scroll left">&#8592;</button>
+      <div class="testimonials-carousel" id="testimonialsCarousel">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "Evergreen has transformed our practice. I save at least 2 hours every day on documentation, which means more time with my family and less burnout."
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">SJ</div>
+            <div class="author-info">
+              <h4>Dr. Sarah Johnson</h4>
+              <p>Family Medicine Physician</p>
+            </div>
+          </div>
         </div>
-        <div class="testimonial-author">
-          <div class="author-avatar">SJ</div>
-          <div class="author-info">
-            <h4>Dr. Sarah Johnson</h4>
-            <p>Family Medicine Physician</p>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "The scribes at Evergreen are phenomenal. They capture every detail accurately, and our documentation quality scores have improved significantly."
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">MC</div>
+            <div class="author-info">
+              <h4>Dr. Michael Chen</h4>
+              <p>Emergency Medicine Director</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "Implementation was seamless and the ROI has been incredible. We're seeing more patients with less administrative burden on our providers."
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">LR</div>
+            <div class="author-info">
+              <h4>Lisa Rodriguez</h4>
+              <p>Practice Manager</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "I was skeptical at first, but Evergreen's team is so responsive and professional. My notes are always ready and accurate."
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">AK</div>
+            <div class="author-info">
+              <h4>Dr. Amir Khan</h4>
+              <p>Internal Medicine</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "Our providers are happier and our billing is faster. Evergreen is a game changer for our clinic."
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">TS</div>
+            <div class="author-info">
+              <h4>Tina Smith</h4>
+              <p>Clinic Administrator</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            "The onboarding was smooth and the support is top-notch. Highly recommend Evergreen to any busy practice."
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">JW</div>
+            <div class="author-info">
+              <h4>Dr. James Wu</h4>
+              <p>Pediatrics</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-content">
-          “The scribes at Evergreen are phenomenal. They capture every detail accurately, and our documentation quality scores have improved significantly.”
-        </div>
-        <div class="testimonial-author">
-          <div class="author-avatar">MC</div>
-          <div class="author-info">
-            <h4>Dr. Michael Chen</h4>
-            <p>Emergency Medicine Director</p>
-          </div>
-        </div>
+      <button class="carousel-arrow right" aria-label="Scroll right">&#8594;</button>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section" id="faq">
+    <div class="faq-heading">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">How secure is my data?</button>
+        <div class="faq-answer">We use industry-standard encryption and strict access controls to ensure your data is always protected and HIPAA-compliant.</div>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-content">
-          “Implementation was seamless and the ROI has been incredible. We're seeing more patients with less administrative burden on our providers.”
-        </div>
-        <div class="testimonial-author">
-          <div class="author-avatar">LR</div>
-          <div class="author-info">
-            <h4>Lisa Rodriguez</h4>
-            <p>Practice Manager</p>
-          </div>
-        </div>
+      <div class="faq-item">
+        <button class="faq-question">What EMRs do you integrate with?</button>
+        <div class="faq-answer">We support integration with most major EMRs, including Epic, Cerner, Athenahealth, and more. Contact us for specific compatibility.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How quickly are notes delivered?</button>
+        <div class="faq-answer">Most notes are delivered within 24 hours, with STAT options available for urgent cases.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can I try Evergreen before committing?</button>
+        <div class="faq-answer">Absolutely! We offer a free trial so you can experience our service risk-free.</div>
       </div>
     </div>
   </section>
@@ -798,6 +1005,14 @@
           <a href="#" class="social-link"><i data-feather="twitter"></i></a>
           <a href="#" class="social-link"><i data-feather="linkedin"></i></a>
         </div>
+        <!-- NEWSLETTER SIGNUP -->
+        <form class="newsletter-form">
+          <label for="newsletter-email">Join our newsletter</label>
+          <div class="newsletter-input-group">
+            <input type="email" id="newsletter-email" name="newsletter-email" placeholder="Your email address" required />
+            <button type="submit">Subscribe</button>
+          </div>
+        </form>
       </div>
       <div class="footer-links">
         <h3>Quick Links</h3>
@@ -818,6 +1033,75 @@
       menu.classList.toggle('show');
     }
     feather.replace();
+
+    // TESTIMONIALS CAROUSEL DRAG/SCROLL
+    const carousel = document.getElementById('testimonialsCarousel');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    carousel.addEventListener('mousedown', (e) => {
+      isDown = true;
+      carousel.classList.add('active');
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+    carousel.addEventListener('mouseleave', () => {
+      isDown = false;
+      carousel.classList.remove('active');
+    });
+    carousel.addEventListener('mouseup', () => {
+      isDown = false;
+      carousel.classList.remove('active');
+    });
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.5; //scroll-fast
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+    // Touch events
+    carousel.addEventListener('touchstart', (e) => {
+      isDown = true;
+      startX = e.touches[0].pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+    carousel.addEventListener('touchend', () => {
+      isDown = false;
+    });
+    carousel.addEventListener('touchmove', (e) => {
+      if (!isDown) return;
+      const x = e.touches[0].pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+    // Arrow buttons
+    const leftBtn = document.querySelector('.carousel-arrow.left');
+    const rightBtn = document.querySelector('.carousel-arrow.right');
+    leftBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: -350, behavior: 'smooth' });
+    });
+    rightBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: 350, behavior: 'smooth' });
+    });
+    // FAQ ACCORDION
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(btn => {
+      btn.addEventListener('click', function() {
+        const item = this.parentElement;
+        item.classList.toggle('active');
+        // Optionally close others:
+        faqQuestions.forEach(otherBtn => {
+          if (otherBtn !== btn) otherBtn.parentElement.classList.remove('active');
+        });
+      });
+    });
+    // NEWSLETTER FORM (dummy handler)
+    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for subscribing!');
+      this.reset();
+    });
   </script>
 </body>
 </html>
