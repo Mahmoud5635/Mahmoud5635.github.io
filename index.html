@@ -22,23 +22,6 @@
       --cloud: #eaf6f3;
       --text: #455467;
       --section-spacing: 100px;
-        /* …all your existing vars… */
-  --bg: var(--light);
-  --fg: var(--dark);
-  --accent-light: #4d9775; /* if you use this for hover states */
-}
-
-[data-theme="dark"] {
-  --bg: #2b2b2b;      /* dark grey */
-  --fg: #e0e0e0;      /* light grey text */
-  --accent: #4d9775;  /* a slightly brighter accent */
-  /* you can tweak shadows or overlays here, too */
-}
-
-body {
-  background: var(--bg);
-  color: var(--fg);
-}
     }
     *, *::before, *::after {
       box-sizing: border-box;
@@ -648,24 +631,6 @@ body {
       <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
       <a href="#contact" class="cta-button" onclick="toggleMobileMenu()">Schedule a Meeting</a>
     </div>
-      <div class="container">
-    <a href="#" class="logo">Evergreen</a>
-    <nav>
-      <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#schedule">Schedule a Meeting</a></li>
-      </ul>
-    </nav>
-    <button class="cta-button">Free Trial</button>
-
-    <!-- ★ right after the “Schedule a Meeting”/CTA: -->
-    <button id="theme-toggle" aria-label="Toggle dark mode" style="margin-left:1rem;font-size:1.25rem;background:none;border:none;cursor:pointer;">
-      🌙
-    </button>
-  </div>
   </header>
 
   <!-- HERO -->
@@ -854,13 +819,5 @@ body {
     }
     feather.replace();
   </script>
-  <script>
-  const btn = document.getElementById('theme-toggle');
-  btn.addEventListener('click', () => {
-    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? '' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    btn.textContent = next ? '☀️' : '🌙';
-  });
-</script>
 </body>
 </html>
