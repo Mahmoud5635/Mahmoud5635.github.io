@@ -900,6 +900,20 @@
   max-width: 320px;
   flex: 0 0 auto;
 }
+@media (min-width: 901px) {
+  .horizontal-faq-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+    overflow-x: visible;
+    padding-bottom: 0;
+  }
+  .horizontal-faq-list .faq-item {
+    min-width: 0;
+    max-width: 100%;
+    flex: 1 1 0%;
+  }
+}
 @media (max-width: 900px) {
   .horizontal-faq-list {
     gap: 18px;
